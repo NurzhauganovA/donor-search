@@ -1,0 +1,151 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/schedule_blood_donation.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Schedule blood donor {% endblock %}
+
+{% block page_title %} Schedule blood donor {% endblock %}
+
+{% block content %}
+    <div class="notification_donation_block">
+        <h1 class="main_title_notification_donation_block">
+            Donation Reminder
+        </h1>
+        <div class="select_donation_type_block">
+            <h1>Select donation type</h1>
+            <p>After selecting the donation type, the nearest available date will be automatically displayed, taking into account the intervals between donations.</p>
+
+            <div class="donation_type_list_block">
+                {% for blood_type in blood_types %}
+                    <button class="donation_type_button" id="{{ blood_type.key }}" onclick="selectDonationType()">
+                        {{ blood_type.value }}
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="planned_date_block">
+            <h1>Planned date</h1>
+            <input type="date" id="planned_date_input" value="{{ current_date }}" class="form-control">
+        </div>
+
+        <div class="type_of_donation">
+            <h1>Type of donation</h1>
+            <div class="donation-options">
+                <div class="donation-card selected" onclick="selectOption('free')">
+                    <div class="card-header">
+                        <h4>Free of charge</h4>
+                        <span class="checkmark">&#10004;</span>
+                    </div>
+                    <p>Meals or compensation for meals (5% of the minimum wage, approximately 700-1500 ₸. Taken into account when receiving the title of Honorary Donor.)</p>
+                </div>
+
+                <div class="donation-card" onclick="selectOption('paid')">
+                    <div class="card-header">
+                        <h4>Paid</h4>
+                        <span class="checkmark">&#10004;</span>
+                    </div>
+                    <p>Money or social support. Does not count towards the honorary donor title.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="city_donation_block">
+            <h1>City</h1>
+            <input type="text" id="city_input" value="{{ city }}">
+        </div><br>
+
+        <div class="blood_center_donation_block">
+            <h1>Blood center</h1>
+            <select name="" id="">
+                {% for donation_center in all_blood_donation_centers %}
+                    {% if donation_center == blood_donation_center %}
+                        <option value="{{ donation_center.id }}" selected>{{ donation_center.name }}</option>
+                    {% else %}
+                        <option value="{{ donation_center.id }}">{{ donation_center.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="submit_donation_block">
+            <button class="submit_donation_button" onclick="submitDonationRequest()">Remind about donation</button>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function submitDonationRequest() {
+            const donationType = document.querySelector('.donation_type_button.active').id;
+            const plannedDate = document.querySelector('#planned_date_input').value;
+            const donationGroup = document.querySelector('.donation-card.selected h4').innerText;
+            const city = document.querySelector('#city_input').value;
+            const bloodCenter = document.querySelector('.blood_center_donation_block select').value;
+
+            console.log(donationType, plannedDate, donationGroup, city, bloodCenter);
+
+            if(!donationType || !plannedDate || !donationGroup || !city || !bloodCenter) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            const requestData = {
+                donationType,
+                plannedDate,
+                donationGroup,
+                city,
+                bloodCenter
+            }
+
+            console.log(requestData);
+
+            fetch('/api/create_donation_request/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    window.location.href = '/';
+
+                } else {
+                    alert('Error creating donation request');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function selectOption(type) {
+            const cards = document.querySelectorAll('.donation-card');
+            cards.forEach(card => card.classList.remove('selected'));
+
+            if (type === 'free') {
+                document.querySelector('.donation-card:nth-child(1)').classList.add('selected');
+            } else {
+                document.querySelector('.donation-card:nth-child(2)').classList.add('selected');
+            }
+        }
+
+        function selectDonationType() {
+            // Получаем все кнопки
+            const buttons = document.querySelectorAll('.donation_type_button');
+
+            // Удаляем класс 'active' у всех кнопок
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Добавляем класс 'active' только на кликнутую кнопку
+            event.target.classList.add('active');
+        }
+    </script>
+{% endblock %}

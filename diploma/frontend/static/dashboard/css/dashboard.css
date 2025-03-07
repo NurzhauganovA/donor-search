@@ -1,0 +1,181 @@
+.support_donor_poster_block {
+    background-color: #FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 40px 0 40px;
+}
+
+.support_donor_poster_block {
+    display: flex;
+}
+
+.main_title_support_donor {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main_title_support_donor {
+    color: #FF2A23;
+}
+
+.main_title_support_donor p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.main_title_support_donor h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.main_title_support_donor a {
+    width: 200px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF2A23;
+    border-radius: 5px;
+    cursor: pointer;
+
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+
+    margin-bottom: 40px;
+}
+
+.blood_center_needs_block {
+    margin: 100px 0;
+}
+
+.main_title_blood_center_needs_block {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.main_data_blood_center_needs {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cart_block_blood_center_needs {
+    background-color: #FFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 380px;
+}
+
+.title_cart_block h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.title_cart_block p {
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.main_info_cart_block {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.flexed_main_info_cart_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.need_main_info_cart_block, .enough_main_info_cart_block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.need_main_info_cart_block h1, .enough_main_info_cart_block h1 {
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.need_main_info_cart_block div, .enough_main_info_cart_block div {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.need_main_info_cart_block div {
+    background-color: #FF2A23;
+}
+
+.enough_main_info_cart_block div {
+    background-color: #4CAF50;
+}
+
+.blood_group_list_cart_block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.cart_blood_group_block {
+    width: 80px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.cart_blood_group_block.required {
+    color: #FF2A23;
+    background-color: rgba(247,62,62,.1);
+    border: 2px solid rgba(247,62,62,.4);
+}
+
+.cart_blood_group_block.enough {
+    color: #4CAF50;
+    background-color: rgba(76,175,80,.1);
+    border: 2px solid rgba(76,175,80,.4);
+}
+
+.read_more_cart_block, .schedule_donation_cart_block {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.read_more_cart_block {
+    border: 1px solid #FF2A23;
+}
+
+.read_more_cart_block a {
+    color: #FF2A23;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.schedule_donation_cart_block {
+    margin-top: 10px;
+    background-color: #FF2A23;
+}
+
+.schedule_donation_cart_block a {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+}
