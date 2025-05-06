@@ -1,0 +1,349 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/base_requirements.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Requirements {% endblock %}
+
+{% block page_title %} Requirements {% endblock %}
+
+{% block content %}
+    <div class="how_become_container ">
+        <h1>Can I become a donor?</h1>
+        <div><h2>Criteria for admission to blood donation:</h2>
+            <ul>
+                <li>Age from 18 years</li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Weight from 50 kg and
+                    body mass index from 18.5 and not more than 40</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Body temperature 37°C
+                    and below</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pulse from 55 to 95
+                    beats per minute</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pressure - 90-149 mm
+                    Hg (systolic), 60-89 mm Hg (diastolic)</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Absence of
+                    contraindications from the list of absolute and temporary contraindications</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You may need a
+                    residence permit of at least six months (in some regions, at least a year) in the region of
+                    donation. </font></font><a class="staticPages_newReq_Div_Block_Link__VMpOO" href="{% url 'where_donate_blood' %}"
+                                               target="_blank"> <!-- --><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">Here</font></font></a> <!-- --><font
+                        style="vertical-align: inherit;"><font style="vertical-align: inherit;"> you can see the
+                    addresses of blood centers that are ready to accept donors without local residence
+                    permits.</font></font></li>
+            </ul>
+        </div>
+        <div class="staticPages_newReq_Div_Block__1d0xH"><h2><font style="vertical-align: inherit;"><font
+                style="vertical-align: inherit;">Absolute contraindications to donation</font></font></h2>
+            <ol>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Infectious and
+                    parasitic diseases:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HIV
+                            infection,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hepatitis B
+                            and C viruses,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">syphilis,
+                            congenital or acquired,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tuberculosis
+                            (all forms),</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">brucellosis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">typhus,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">tularemia,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">leprosy
+                            (Hansen's disease),</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">African
+                            trypanosomiasis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chagas
+                            disease,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">leishmaniasis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">toxoplasmosis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">babesiosis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronic Q
+                            fever,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">echinococcosis,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">filariasis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dracunculiasis,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">repeated
+                            positive test result for markers of the disease caused by the human immunodeficiency virus
+                            (HIV infection), repeated positive test result for markers of viral hepatitis B and C,
+                            repeated positive test result for markers of the causative agent of syphilis.</font></font>
+                        </li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Malignant
+                    neoplasms.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the blood,
+                    hematopoietic organs and certain disorders involving the immune mechanism.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the
+                    central nervous system (organic disorders).</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Complete lack of
+                    hearing and/or speech and/or vision.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mental disorders and
+                    behavioral disorders in a state of exacerbation and (or) posing a danger to the patient and
+                    others.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mental and behavioral
+                    disorders due to substance use.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the
+                    circulatory system:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hypertensive
+                            heart disease stage II-III,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ischemic heart
+                            disease,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">thromboangiitis
+                            obliterans,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nonspecific
+                            aortoarteritis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">phlebitis and
+                            thrombophlebitis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">endocarditis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">myocarditis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heart defect
+                            (congenital, acquired).</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Respiratory
+                    diseases:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bronchial
+                            asthma,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bronchiectasis,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">emphysema.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the
+                    digestive system:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">achylic
+                            gastritis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronic liver
+                            diseases, including unspecified,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">toxic liver
+                            damage,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">calculous
+                            cholecystitis with recurrent attacks and symptoms of cholangitis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">cirrhosis.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the
+                    genitourinary system in the decompensation stage:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diffuse and
+                            focal kidney lesions,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">urolithiasis.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of connective
+                    tissue, as well as acute and/or chronic osteomyelitis.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Radiation
+                    sickness.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the
+                    endocrine system in the stage of decompensation.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the eye
+                    and its adnexa:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">uveitis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iritis,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">iridocyclitis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chorioretinal
+                            inflammation,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">trachoma,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">myopia 6
+                            diopters or more.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diseases of the skin
+                    and subcutaneous tissue:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">psoriasis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">erythema,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eczema,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">pyoderma,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">sycosis,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pemphigus
+                            (pemphigus),</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dermatophytosis,</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">furunculosis.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Surgical
+                    interventions:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">resection,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">amputation,</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">removal of an
+                            organ (stomach, kidney, spleen, ovaries, uterus, etc.),</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">transplantation
+                            of organs and tissues resulting in permanent loss of ability to work (I and II disability
+                            groups),</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">xenotransplantation
+                            of organs.</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permanent loss of
+                    ability to work (I and II disability groups).</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Female donor for
+                    donation of 2 units of red blood cell mass or suspension obtained by apheresis.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Persons with repeated
+                    non-specific reactions to markers of human immunodeficiency viruses, hepatitis B and C, and the
+                    causative agent of syphilis.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Persons with
+                    re-detected alloimmune antibodies to red blood cell antigens (except for plasma donors for the
+                    production of medicinal products).</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Persons with
+                    re-detected extra-agglutinins of anti-A1 (except for plasma donors for the production of medicinal
+                    products).</font></font></li>
+            </ol>
+        </div>
+        <div class="staticPages_newReq_Div_Block__1d0xH"><h2><font style="vertical-align: inherit;"><font
+                style="vertical-align: inherit;">Temporary contraindications to donation</font></font></h2>
+            <ol>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Body weight less than
+                    50 kg - until body weight reaches 50 kg</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Age under 20 years -
+                    for donation of 2 units of red blood cell mass or suspension obtained by apheresis - up to 20 years
+                    of age</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Body weight less than
+                    70 kg - for donation of 2 units of red blood cell mass or suspension obtained by apheresis - until
+                    body weight reaches 70 kg.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hemoglobin less than
+                    140 g/l - for donation of 2 units of red blood cell mass or suspension obtained by apheresis - until
+                    the hemoglobin level reaches 140 g/l</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Body temperature above
+                    37 °C - until body temperature returns to normal (37 °C and below)</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pulse less than 55
+                    beats per minute and more than 95 beats per minute - until the pulse is normalized from 55 to 95
+                    beats per minute</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Blood pressure:
+                    systolic less than 90 mmHg and more than 149 mmHg; diastolic — less than 60 mmHg and more than 89
+                    mmHg — until normalization of systolic pressure: 90 - 149 mmHg; diastolic pressure: 60 - 89
+                    mmHg.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Body mass index - less
+                    than 18.5 and more than 40;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Discrepancy between
+                    the results of the ABO blood group, Rh factor, C, c, E, e, K antigens test and the results of the
+                    previous donation test - until a confirmatory test is performed;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transfusion of blood
+                    and (or) its components - 120 calendar days from the date of transfusion;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Primary detection of
+                    alloimmune antibodies to red blood cell antigens in a donor's blood sample - until confirmation of
+                    the absence of alloimmune antibodies to red blood cell antigens in the donor's blood sample no
+                    earlier than 180 calendar days after the primary detection;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Surgical
+                    interventions, including artificial termination of pregnancy - 120 calendar days from the date of
+                    surgery;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Medical and cosmetic
+                    procedures that involve damage to the skin (tattoos, piercings, acupuncture, etc.) - 120 calendar
+                    days from the end of the procedures;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contact with carriers
+                    and patients with viral hepatitis B or C, syphilis, disease caused by the human immunodeficiency
+                    virus (HIV infection) - 120 calendar days after the end of the last contact</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A questionable result
+                    for markers of viral hepatitis B and/or viral hepatitis C, and/or disease caused by the human
+                    immunodeficiency virus (HIV infection), and/or the causative agent of syphilis - until the absence
+                    of markers of viral hepatitis B and/or viral hepatitis C, and/or disease caused by the human
+                    immunodeficiency virus (HIV infection), and/or the causative agent of syphilis is confirmed, but not
+                    earlier than 120 calendar days after receiving the questionable result of the laboratory test</font></font>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Past infectious
+                    diseases: history of malaria in the absence of symptoms and with negative results of immunological
+                    tests - 3 years.</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Typhoid fever after
+                    recovery and a complete clinical examination in the absence of pronounced functional disorders - 1
+                    year;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tonsillitis, flu,
+                    acute respiratory viral infection - 30 calendar days after recovery; Past infectious and parasitic
+                    diseases not specified in Sections 1 and 2 of Appendix No. 2 to this order - 120 calendar days after
+                    recovery; Acute or chronic inflammatory processes in the acute stage, regardless of localization -
+                    30 calendar days after the acute period has been stopped;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exacerbation of
+                    gastric ulcer and (or) duodenal ulcer - 1 year from the moment of relief of the acute period;</font></font>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kidney diseases not
+                    specified in paragraph 12 of section 2 of Appendix No. 2 to this order - 1 year from the moment of
+                    relief of the acute period</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Allergic diseases in
+                    the acute stage - 60 calendar days after the acute period has been stopped;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The period of
+                    pregnancy and lactation is 1 year after childbirth, 90 calendar days after the end of
+                    lactation;</font></font></li>
+                <li><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">Vaccination:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vaccination
+                            with inactivated vaccines (including against tetanus, diphtheria, whooping cough,
+                            paratyphoid, cholera, influenza), toxoids - 10 calendar days after
+                            vaccination;</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vaccination
+                            with live vaccines (including against brucellosis, plague, tularemia, tuberculosis,
+                            smallpox, rubella, poliomyelitis orally), administration of antitetanus serum (in the
+                            absence of pronounced inflammatory phenomena at the injection site) - 30 calendar days after
+                            vaccination;</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vaccination
+                            with recombinant vaccines (including against viral hepatitis B, coronavirus infection) - 30
+                            calendar days after vaccination;</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administration
+                            of immunoglobulin against hepatitis B - 120 calendar days after vaccination;</font></font>
+                        </li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administration
+                            of immunoglobulin against tick-borne encephalitis - 120 calendar days after
+                            vaccination;</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rabies
+                            vaccination - 1 year after vaccination;</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Taking
+                    medications:</font></font>
+                    <ul>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">antibiotics -
+                            14 calendar days after completion of treatment;</font></font></li>
+                        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">analgesics,
+                            anticoagulants, antiplatelet agents (including salicylates) - 3 calendar days after the end
+                            of administration;</font></font></li>
+                    </ul>
+                </li>
+                <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alcohol intake - 48
+                    hours;</font></font></li>
+                <li> <!-- --><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deviation
+                    from the limits of the composition and biochemical parameters of peripheral blood (Appendix No. 2 to
+                    the Procedure for donors to undergo medical examination) - until the permissible limits of the
+                    parameter values are reached, but not earlier than 30 calendar days.</font></font></li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

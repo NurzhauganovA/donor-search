@@ -1,0 +1,194 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/where_donate_blood.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Where to donate blood? {% endblock %}
+
+{% block page_title %} Where to donate blood? {% endblock %}
+
+{% block content %}
+    <div class="city-select">
+        <div class="city_select_input">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                </svg>
+            </i>
+            <input type="text" placeholder="{% trans 'City or blood center' %}" class="city-input" id="citySearchInput">
+        </div>
+        <div class="city-dropdown" id="cityDropdown"></div>
+    </div>
+    <div class="count_city_select">
+        <h1>{% trans "Blood center" %} <b>{{ count_bloodstations }}</b></h1>
+        <a href="{% url 'where_donate_blood' %}">{% trans "Reset filters" %}</a>
+    </div>
+
+    <div class="filter-group" id="filters">
+        <label class="filter-option">
+            <input type="checkbox" data-filter="no_registration">
+            <span>{% trans "You can rent without registration" %}</span>
+        </label>
+        <label class="filter-option">
+            <input type="checkbox" data-filter="works_saturday">
+            <span>{% trans "Open on Saturday" %}</span>
+        </label>
+        <label class="filter-option">
+            <input type="checkbox" data-filter="works_sunday">
+            <span>{% trans "Open on Sunday" %}</span>
+        </label>
+    </div>
+    <br>
+    <br>
+    <br>
+    <i class="bi bi-caret-left slider-button prev-btn-center"></i>
+    <i class="bi bi-caret-right slider-button next-btn-center"></i>
+
+    <div class="slider-wrapper-centers">
+        <div class="slider-viewport-centers">
+            <div class="slider-track-centers" id="center-slider-track">
+                {% for blood_donation_center in blood_donation_centers %}
+                    <div class="cart_block_blood_center_needs">
+                        <input type="hidden" name="no_registration" value="{{ blood_donation_center.no_registration|yesno:"1,0" }}">
+                        <input type="hidden" name="works_saturday" value="{{ blood_donation_center.works_saturday|yesno:"1,0" }}">
+                        <input type="hidden" name="without_registration" value="{{ blood_donation_center.works_sunday|yesno:"1,0" }}">
+
+                        <div class="title_cart_block">
+                            <h1>{{ blood_donation_center.name }}</h1>
+                            <p>{{ blood_donation_center.city }}, {{ blood_donation_center.address }}</p>
+                            <div class="main_info_cart_block">
+                                <div class="flexed_main_info_cart_block">
+                                    <div class="need_main_info_cart_block">
+                                        <h1>{% trans "Required" %}</h1><div></div>
+                                    </div>
+                                    <div class="enough_main_info_cart_block">
+                                        <h1>{% trans "Enough" %}</h1><div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blood_group_list_cart_block">
+                            {% for blood_request in blood_donation_center.center_requests.all %}
+                                <div class="cart_blood_group_block {{ blood_request.get_is_required }}">
+                                    {{ blood_request.blood_group }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="schedule_donation_cart_block">
+                            <a href="{% url 'schedule_blood_donation' blood_donation_center.id %}">{% trans "Join" %}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("center-slider-track");
+            const cards = document.querySelectorAll(".cart_block_blood_center_needs");
+            const prevBtn = document.querySelector(".prev-btn-center");
+            const nextBtn = document.querySelector(".next-btn-center");
+
+            const cardStyle = getComputedStyle(cards[0]);
+            const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+            const cardWidth = cards[0].offsetWidth + cardMargin;
+
+            let currentIndex = 0;
+            const maxIndex = cards.length - 3;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            window.addEventListener("resize", updateSlider); // адаптация при ресайзе
+        });
+    </script>
+
+    <script>
+        const cities = [
+            {% for city in unique_cities %}
+                {
+                    name: "{{ city.city }}",
+                    region: "{{ city.city }}",
+                    country: "{{ city.country }}",
+                },
+            {% endfor %}
+        ]
+
+        const dropdown = document.getElementById('cityDropdown');
+        const input = document.getElementById('citySearchInput');
+
+        function renderCities(filter = "") {
+            dropdown.innerHTML = "";
+
+            const matched = cities.filter(city => {
+                const search = `${city.name} ${city.region} ${city.country}`.toLowerCase();
+                return search.includes(filter.toLowerCase());
+            });
+
+            if (matched.length === 0) {
+                dropdown.innerHTML = '<div style="padding: 10px 16px;">{% trans "No data found" %}</div>';
+                return;
+            }
+
+            dropdown.innerHTML += `<div class="city-section-label">{% trans 'Cities' %}</div>`;
+
+            matched.forEach(city => {
+                const el = document.createElement('a');
+                el.className = 'city-item';
+                el.setAttribute('href', `/bloodstations/${city.name}`);
+                el.innerHTML = `
+                    <img class="city-icon" src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="icon">
+                    <div class="city-texts">
+                      <span class="city-name">${city.name}</span>
+                      <span class="city-desc">${city.country}, ${city.region}</span>
+                    </div>
+                `;
+                el.addEventListener('click', () => {
+                    input.value = city.name;
+                    dropdown.innerHTML = "";
+                });
+                dropdown.appendChild(el);
+            });
+        }
+
+        input.addEventListener("input", () => {
+            renderCities(input.value);
+        });
+
+        input.addEventListener("focus", () => {
+            renderCities(input.value);
+        });
+
+        document.addEventListener("click", e => {
+            if (!e.target.closest(".city-select")) {
+                dropdown.innerHTML = "";
+            }
+        });
+    </script>
+
+{% endblock %}

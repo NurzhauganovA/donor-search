@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block links %}
@@ -12,55 +13,213 @@
 {% block content %}
     <div class="support_donor_poster_block">
         <div class="main_title_support_donor">
-            <p>#supportdonor</p>
-            <h1>A donor is one who gives</h1>
-            <a href="">Support</a>
+            <p>{% trans "#supportdonor" %}</p>
+            <h1>{% trans "A donor is one who gives" %}</h1>
+            <a href="">{% trans "Support" %}</a>
         </div>
         <div class="image_support_donor_poster">
             <img src="https://api2.donorsearch.org/media/main_page/banners/2023-05-19_19.37.47.jpg.330x286_q75_box-2%2C1%2C734%2C635_crop_detail_model-Banner.jpg" alt="">
         </div>
     </div>
 
-    <div class="blood_center_needs_block">
-        <h1 class="main_title_blood_center_needs_block">Blood Center Needs</h1>
-        <div class="main_data_blood_center_needs">
-            {% for blood_donation_center in blood_donation_centers %}
-                <div class="cart_block_blood_center_needs">
-                    <div class="title_cart_block">
-                        <h1>{{ blood_donation_center.name }}</h1>
-                        <p>{{ blood_donation_center.city }}, {{ blood_donation_center.address }}</p>
-                        <div class="main_info_cart_block">
-                            <div class="flexed_main_info_cart_block">
-                                <div class="need_main_info_cart_block">
-                                    <h1>Required</h1>
-                                    <div></div>
+    <div class="donor-advice-section">
+        <div class="donor-actions">
+            <h1>{% trans "Donor advice" %}</h1>
+            <a href="">{% trans "I want to add a piece of advice" %}</a>
+        </div>
+
+        <i class="bi bi-caret-left slider-button prev-btn"></i>
+        <i class="bi bi-caret-right slider-button next-btn"></i>
+        <div class="slider-wrapper">
+            <div class="slider-viewport">
+                <div class="slider-track" id="slider-track">
+                    {% for donor_advice in donor_advices %}
+                        <div class="donor-card">
+                            <div class="donor-header">
+                                <img src="{{ donor_advice.author.user_info.photo_avatar.url }}" alt="avatar"
+                                     class="donor-avatar">
+                                <div>
+                                    <h3>{{ donor_advice.author.full_name }}</h3>
                                 </div>
-                                <div class="enough_main_info_cart_block">
-                                    <h1>Enough</h1>
-                                    <div></div>
-                                </div>
+                                <span class="donor-badge">{% trans "Experienced donor" %}</span>
+                            </div>
+                            <p class="donation-count">{% trans "Donations" %}: {{ donor_advice.get_count_donor_donations }}</p>
+
+                            <div class="donor-advice-wrapper">
+                                <p class="donor-advice-text">{{ donor_advice.description }}</p>
+                                <button class="read-more-btn">{% trans "Read more" %}</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="blood_group_list_cart_block">
-                        {% for blood_request in blood_donation_center.center_requests.all %}
-                            <div class="cart_blood_group_block {{ blood_request.get_is_required }}">
-                                {{ blood_request.blood_group }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="read_more_cart_block">
-                        <a href="">Read more</a>
-                    </div>
-                    <div class="schedule_donation_cart_block">
-                        <a href="{% url 'schedule_blood_donation' blood_donation_center.id %}">Schedule a donation</a>
-                    </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="blood_center_needs_block">
+        <h1 class="main_title_blood_center_needs_block">{% trans "Blood Center Needs" %}</h1>
+
+        <i class="bi bi-caret-left slider-button prev-btn-center"></i>
+        <i class="bi bi-caret-right slider-button next-btn-center"></i>
+
+        <div class="slider-wrapper-centers">
+            <div class="slider-viewport-centers">
+                <div class="slider-track-centers" id="center-slider-track">
+                    {% for blood_donation_center in blood_donation_centers %}
+                        <div class="cart_block_blood_center_needs">
+                            <input type="hidden" name="no_registration" value="{{ blood_donation_center.no_registration|yesno:"1,0" }}">
+                            <input type="hidden" name="works_saturday" value="{{ blood_donation_center.works_saturday|yesno:"1,0" }}">
+                            <input type="hidden" name="without_registration" value="{{ blood_donation_center.works_sunday|yesno:"1,0" }}">
+
+                            <div class="title_cart_block">
+                                <h1>{{ blood_donation_center.name }}</h1>
+                                <p>{{ blood_donation_center.city }}, {{ blood_donation_center.address }}</p>
+                                <div class="main_info_cart_block">
+                                    <div class="flexed_main_info_cart_block">
+                                        <div class="need_main_info_cart_block">
+                                            <h1>{% trans "Required" %}</h1><div></div>
+                                        </div>
+                                        <div class="enough_main_info_cart_block">
+                                            <h1>{% trans "Enough" %}</h1><div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="blood_group_list_cart_block">
+                                {% for blood_request in blood_donation_center.center_requests.all %}
+                                    <div class="cart_blood_group_block {{ blood_request.get_is_required }}">
+                                        {{ blood_request.blood_group }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="schedule_donation_cart_block">
+                                <a href="{% url 'schedule_blood_donation' blood_donation_center.id %}">{% trans "Join" %}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block scripts %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("center-slider-track");
+            const cards = document.querySelectorAll(".cart_block_blood_center_needs");
+            const prevBtn = document.querySelector(".prev-btn-center");
+            const nextBtn = document.querySelector(".next-btn-center");
+
+            const cardStyle = getComputedStyle(cards[0]);
+            const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+            const cardWidth = cards[0].offsetWidth + cardMargin;
+
+            let currentIndex = 0;
+            const maxIndex = cards.length - 3;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            window.addEventListener("resize", updateSlider); // адаптация при ресайзе
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("slider-track");
+            const cards = document.querySelectorAll(".donor-card");
+            const prevBtn = document.querySelector(".prev-btn");
+            const nextBtn = document.querySelector(".next-btn");
+
+            const cardStyle = getComputedStyle(cards[0]);
+            const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+            const cardWidth = cards[0].offsetWidth + cardMargin;
+
+            let currentIndex = 0;
+            const maxIndex = cards.length - 3;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            // Expand logic
+            cards.forEach(card => {
+                const btn = card.querySelector('.read-more-btn');
+                const text = card.querySelector('.donor-advice-text');
+
+                if (text.scrollHeight <= 120) {
+                    btn.style.display = 'none';
+                }
+
+                btn.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                    btn.textContent = card.classList.contains('expanded') ? '{% trans "Show less" %}' : '{% trans "Read more" %}';
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".donor-card");
+
+            cards.forEach(card => {
+                const text = card.querySelector(".donor-advice-text");
+                const btn = card.querySelector(".read-more-btn");
+
+                // проверяем, нужно ли показывать кнопку
+                if (text.scrollHeight <= 120) {
+                    btn.style.display = "none";
+                }
+
+                let expanded = false;
+
+                btn.addEventListener("click", () => {
+                    expanded = !expanded;
+
+                    if (expanded) {
+                        text.style.maxHeight = text.scrollHeight + "px";
+                        btn.textContent = "{% trans 'Show less' %}";
+                    } else {
+                        text.style.maxHeight = "120px";
+                        btn.textContent = "{% trans 'Read more' %}";
+                    }
+                });
+            });
+        });
+    </script>
 
 {% endblock %}

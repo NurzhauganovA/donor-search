@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/urgently_need_donor.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Urgently need donor {% endblock %}
+
+{% block page_title %} Urgently need donor {% endblock %}
+
+{% block content %}
+    <section class="urgent-donors-section">
+        <div class="urgent-header">
+            <h2>{% trans "Donors urgently needed" %}</h2>
+            <a href="{% url 'search_urgently_need_donor' %}" class="find-donor-link">{% trans "Find a donor" %}</a>
+        </div>
+
+        <i class="bi bi-caret-left slider-button prev-btn-center"></i>
+        <i class="bi bi-caret-right slider-button next-btn-center"></i>
+        <div class="slider-wrapper-centers">
+            <div class="slider-viewport-centers">
+                <div class="slider-track-centers" id="center-slider-track">
+                    <!-- Карточка донора -->
+                    {% for donor in urgently_donor_needs %}
+                        <a href="{% url 'urgently_donor_detail' donor.id %}" class="donor-card cart_block_blood_center_needs">
+                        <div class="card-top">
+                            <div class="blood-type-info">
+                                <span class="blood-drop">🩸</span>
+                                <span>{{ donor.get_blood_components_display }}</span>
+                            </div>
+                            <div class="deadline">{% trans "Until" %} {{ donor.deadline|date:"d.m.Y" }}</div>
+                            <div class="blood-group">{{ donor.get_blood_group_display }}</div>
+                            <h3 class="card-title">{% trans "Blood Donor Consumer Community" %}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="location">
+                                <span>📍</span> {{ donor.center.city }}, {{ donor.center.address }}
+                            </div>
+                            <p class="participants">{{ donor.get_donor_count }} / {{ donor.donor_count }} {% trans "are already coming, be the first!" %}</p>
+                            <p class="seeker">{% trans "Looking for" %}</p>
+                            <div class="org-info">
+                                {% if donor.photo %}
+                                    <div class="org-logo" style="background-image: url('{{ donor.photo.url }}')"></div>
+                                {% endif %}
+                                <span class="org-name">{{ donor.first_name }} {{ donor.last_name }}</span>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("center-slider-track");
+            const cards = document.querySelectorAll(".cart_block_blood_center_needs");
+            const prevBtn = document.querySelector(".prev-btn-center");
+            const nextBtn = document.querySelector(".next-btn-center");
+
+            const cardStyle = getComputedStyle(cards[0]);
+            const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+            const cardWidth = cards[0].offsetWidth + cardMargin;
+
+            let currentIndex = 0;
+            const maxIndex = cards.length - 4;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            window.addEventListener("resize", updateSlider); // адаптация при ресайзе
+        });
+    </script>
+
+{% endblock %}

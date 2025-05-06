@@ -1,0 +1,231 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/urgently_need_donor.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Urgently need donor {% endblock %}
+
+{% block page_title %} Urgently need donor {% endblock %}
+
+{% block content %}
+    <section class="detail_donor_data">
+        <div class="search_donors_continues">
+            <img src="https://donorsearch.org/static/images/recipientIcons/watch.svg" alt="">
+            <h1>{% trans "The search for donors continues" %}</h1>
+        </div>
+        <div class="until_time_donor_block">
+            <img src="https://donorsearch.org/static/images/eventIcons/CalendarBlank.svg" alt="">
+            <h1>{% trans "Until" %} {{ donor_need.deadline }}</h1>
+        </div>
+        <div class="main_donor_looking_for_block">
+            {% if donor_need.photo %}
+                <div class="img_block_donor_looking"
+                     style="background-image: url('{{ donor_need.photo.url }}')"
+                ></div>
+            {% endif %}
+            <div class="title_block_donor_looking">
+                <div class="full_name_donor_looking">
+                    <h1>{{ donor_need.first_name }} {{ donor_need.last_name }}</h1>
+                </div>
+                <div class="info_donor_looking">
+                    <div class="blood_component_info">
+                        <img src="https://donorsearch.org/static/images/icons/blood.svg" alt="">
+                        <h1>{{ donor_need.get_blood_components_display }}</h1>
+                    </div>
+                    <div class="blood_group_info">
+                        <h1>{{ donor_need.get_blood_group_display }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="donor_center_info_block">
+            <div class="donor_center_name_block">
+                <img src="https://donorsearch.org/static/images/recipientIcons/hospital.svg" alt="">
+                <h1>{{ donor_need.center.name }}</h1>
+            </div>
+            <div class="donor_center_address_block">
+                <i>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.75C13.6569 12.75 15 11.4069 15 9.75C15 8.09315 13.6569 6.75 12 6.75C10.3431 6.75 9 8.09315 9 9.75C9 11.4069 10.3431 12.75 12 12.75Z" stroke="#4E5355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.5 9.75C19.5 16.5 12 21.75 12 21.75C12 21.75 4.5 16.5 4.5 9.75C4.5 7.76088 5.29018 5.85322 6.6967 4.4467C8.10322 3.04018 10.0109 2.25 12 2.25C13.9891 2.25 15.8968 3.04018 17.3033 4.4467C18.7098 5.85322 19.5 7.76088 19.5 9.75V9.75Z" stroke="#4E5355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </i>
+                <h1>{{ donor_need.center.country }}, {{ donor_need.center.city }}, {{ donor_need.center.address }}</h1>
+            </div>
+        </div>
+        <div>
+            <h1 class="schedule_for_donation">{% trans "Schedule" %}</h1>
+            <div class="schedule_donation_block">
+                <h1 class="select_date_schedule">{% trans "Select date" %}</h1>
+                <div class="form_group" id="dateOptionsContainer"></div>
+                <div class="donors_found">
+                    <h1>{% trans "Donors found" %} {{ donor_need.get_donor_count }} / {{ donor_need.donor_count }}</h1>
+                </div>
+                <button type="button" onclick="scheduleDonation()" class="btn btn-primary" id="signupBtn">{% trans "Sign up" %}</button>
+            </div>
+        </div>
+
+        <div class="reason_for_searching">
+            <h1>{% trans "Reason for searching" %}</h1>
+            <p>{{ donor_need.reason }}</p>
+        </div>
+    </section>
+
+    <section class="urgent-donors-section">
+        <div class="urgent-header">
+            <h2>{% trans "Donors urgently needed" %}</h2>
+            <a href="{% url 'search_urgently_need_donor' %}" class="find-donor-link">{% trans "Find a donor" %}</a>
+        </div>
+
+        <i class="bi bi-caret-left slider-button prev-btn-center"></i>
+        <i class="bi bi-caret-right slider-button next-btn-center"></i>
+        <div class="slider-wrapper-centers">
+            <div class="slider-viewport-centers">
+                <div class="slider-track-centers" id="center-slider-track">
+                    <!-- Карточка донора -->
+                    {% for donor in urgently_donor_needs %}
+                        <a href="{% url 'urgently_donor_detail' donor.id %}" class="donor-card cart_block_blood_center_needs">
+                        <div class="card-top">
+                            <div class="blood-type-info">
+                                <span class="blood-drop">🩸</span>
+                                <span>{{ donor.get_blood_components_display }}</span>
+                            </div>
+                            <div class="deadline">{% trans "Until" %} {{ donor.deadline|date:"d.m.Y" }}</div>
+                            <div class="blood-group">{{ donor.get_blood_group_display }}</div>
+                            <h3 class="card-title">{% trans "Blood Donor Consumer Community" %}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="location">
+                                <span>📍</span> {{ donor.center.city }}, {{ donor.center.address }}
+                            </div>
+                            <p class="participants">{{ donor.get_donor_count }} / {{ donor.donor_count }} {% trans "are already coming, be the first!" %}</p>
+                            <p class="seeker">{% trans "Looking for" %}</p>
+                            <div class="org-info">
+                                {% if donor.photo %}
+                                    <div class="org-logo" style="background-image: url('{{ donor.photo.url }}')"></div>
+                                {% endif %}
+                                <span class="org-name">{{ donor.first_name }} {{ donor.last_name }}</span>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        function scheduleDonation() {
+            const selectedDate = document.querySelector('input[name="donation_date"]:checked');
+            if (selectedDate) {
+                const donationDate = selectedDate.value;
+                fetch('/schedule_request_blood_donation/' + {{ donor_need.id }}, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        "donationDate": donationDate
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('{% trans "Successfully signed up for the donation!" %}');
+                        window.location.href = "{% url 'urgently_need_donor' %}"
+                    } else {
+                        alert('Error: ' + data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                alert('{% trans "Please select a date." %}');
+            }
+        }
+    </script>
+
+    <script>
+        const deadline = new Date("{{ donor_need.deadline|date:'Y-m-d' }}");
+        const today = new Date();
+        const container = document.getElementById('dateOptionsContainer');
+        const signupBtn = document.getElementById('signupBtn');
+
+        const daysDiff = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        const daysToGenerate = Math.min(daysDiff, 5);
+
+        for (let i = 0; i <= daysToGenerate; i++) {
+            const date = new Date();
+            date.setDate(today.getDate() + i);
+
+            const formatted = date.toLocaleDateString('ru-RU');
+            const value = date.toISOString().split('T')[0];
+
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = 'donation_date';
+            input.id = 'date_' + i;
+            input.value = value;
+
+            const label = document.createElement('label');
+            label.setAttribute('for', input.id);
+            label.textContent = formatted;
+
+            input.style.display = 'none';
+            label.style.border = '1px solid black';
+            label.style.padding = '10px 20px';
+            label.style.borderRadius = '30px';
+            label.style.marginRight = '15px';
+            label.style.cursor = 'pointer';
+            label.style.display = 'inline-block';
+
+            input.addEventListener('change', () => {
+                container.querySelectorAll('label').forEach(lbl => lbl.classList.remove('selected-date'));
+                label.classList.add('selected-date');
+            });
+
+            container.appendChild(input);
+            container.appendChild(label);
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("center-slider-track");
+            const cards = document.querySelectorAll(".cart_block_blood_center_needs");
+            const prevBtn = document.querySelector(".prev-btn-center");
+            const nextBtn = document.querySelector(".next-btn-center");
+
+            const cardStyle = getComputedStyle(cards[0]);
+            const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+            const cardWidth = cards[0].offsetWidth + cardMargin;
+
+            let currentIndex = 0;
+            const maxIndex = cards.length - 4;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            window.addEventListener("resize", updateSlider); // адаптация при ресайзе
+        });
+    </script>
+
+{% endblock %}

@@ -1,10 +1,15 @@
 <!doctype html>
+{% load i18n %}
 {% load static %}
 
 <html lang="en">
 <head>
     {% block links %}
     {% endblock %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 
     <!--  FONTS  -->
@@ -56,37 +61,345 @@
         {% endif %}
     {% endfor %}
 
-    <div class="container">
+    <div class="main_container">
         <div class="header">
             <div class="header_container">
-                <div class="header_logo">
+                <a class="header_logo" href="{% url 'home' %}">
                     <svg width="99" height="32" viewBox="0 0 99 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18.671 13.0728C18.671 5.85443 24.5505 0 31.7997 0C39.0489 0 44.9283 5.85443 44.9283 13.0728C44.9283 21.823 37.363 25.1593 32.2843 31.6852C32.1368 31.8741 32.0104 31.979 31.7997 31.979C31.5889 31.979 31.4625 31.8531 31.315 31.6852C26.2363 25.1384 18.671 21.823 18.671 13.0728ZM16.669 13.0728C16.669 10.5548 17.3012 8.18361 18.397 6.08525C18.5445 5.81246 18.4813 5.45574 18.2495 5.2459C16.6479 3.73508 15.0463 2.14033 13.6134 0.314754C13.4659 0.125902 13.3394 0.0209841 13.1287 0.0209841C12.9179 0.0209841 12.7915 0.146885 12.644 0.314754C7.5864 6.86164 0 10.177 0 18.9272C0 26.1456 5.87946 32 13.1287 32C17.238 32 20.8836 30.1325 23.286 27.1948C23.5179 26.922 23.4967 26.5023 23.2228 26.2505C19.7878 22.8302 16.669 19.0741 16.669 13.0728ZM52.0933 11.1633H56.8137C57.9516 11.1633 58.9842 11.3941 59.8693 11.8348C60.7544 12.2754 61.4499 12.9049 61.9556 13.7233C62.4613 14.5416 62.6932 15.4649 62.6932 16.5351C62.6932 17.6052 62.4403 18.5285 61.9556 19.3469C61.4709 20.1652 60.7755 20.7948 59.8693 21.2354C58.9842 21.6761 57.9516 21.9069 56.8137 21.9069H52.1143V11.1633H52.0933ZM56.7084 20.2072C57.4881 20.2072 58.1835 20.0603 58.7946 19.7456C59.3847 19.4518 59.8483 19.0111 60.1854 18.4656C60.5015 17.899 60.6702 17.2695 60.6702 16.5351C60.6702 15.8007 60.5015 15.1502 60.1854 14.6046C59.8693 14.038 59.4057 13.6184 58.7946 13.3246C58.1835 13.0308 57.5091 12.863 56.7084 12.863H54.0952V20.2072H56.7084ZM65.8331 21.4452C65.1587 21.0885 64.653 20.5849 64.2737 19.9554C63.8944 19.3259 63.7047 18.5915 63.7047 17.7941C63.7047 16.9967 63.8944 16.2623 64.2737 15.6328C64.653 15.0033 65.1587 14.4997 65.8331 14.1429C66.5075 13.7862 67.245 13.5974 68.0879 13.5974C68.9308 13.5974 69.6895 13.7862 70.3428 14.1429C71.0172 14.4997 71.5229 15.0033 71.9023 15.6328C72.2816 16.2623 72.4711 16.9757 72.4711 17.7941C72.4711 18.5915 72.2816 19.3259 71.9023 19.9554C71.5229 20.5849 71.0172 21.0885 70.3428 21.4452C69.6685 21.802 68.9308 21.9908 68.0879 21.9908C67.245 21.9908 66.5075 21.802 65.8331 21.4452ZM69.837 19.6407C70.3007 19.179 70.5324 18.5495 70.5324 17.7941C70.5324 17.0387 70.3007 16.4092 69.837 15.9475C69.3734 15.4859 68.7834 15.2341 68.0879 15.2341C67.3715 15.2341 66.8025 15.4649 66.3389 15.9475C65.8753 16.4092 65.6645 17.0387 65.6645 17.7941C65.6645 18.5495 65.8963 19.179 66.3389 19.6407C66.8025 20.1023 67.3715 20.3541 68.0879 20.3541C68.7834 20.3541 69.3734 20.1233 69.837 19.6407ZM81.0902 14.5207C81.7224 15.1292 82.0385 16.0105 82.0385 17.2066V21.8859H80.1208V17.4374C80.1208 16.7239 79.9522 16.1784 79.6151 15.8216C79.2779 15.4649 78.7932 15.2761 78.161 15.2761C77.4445 15.2761 76.8966 15.4859 76.4751 15.9056C76.0748 16.3252 75.864 16.9338 75.864 17.7311V21.8649H73.9463V13.6813H75.7797V14.7305C76.0958 14.3528 76.4962 14.059 76.9809 13.8702C77.4655 13.6813 78.0135 13.5764 78.6035 13.5764C79.6361 13.6184 80.458 13.9121 81.0902 14.5207ZM85.5367 21.4452C84.8624 21.0885 84.3566 20.5849 83.9772 19.9554C83.5979 19.3259 83.4083 18.5915 83.4083 17.7941C83.4083 16.9967 83.5979 16.2623 83.9772 15.6328C84.3566 15.0033 84.8624 14.4997 85.5367 14.1429C86.211 13.7862 86.9486 13.5974 87.7915 13.5974C88.6344 13.5974 89.3931 13.7862 90.0463 14.1429C90.7207 14.4997 91.2265 15.0033 91.6058 15.6328C91.9851 16.2623 92.1748 16.9757 92.1748 17.7941C92.1748 18.5915 91.9851 19.3259 91.6058 19.9554C91.2265 20.5849 90.7207 21.0885 90.0463 21.4452C89.372 21.802 88.6344 21.9908 87.7915 21.9908C86.9486 21.9908 86.211 21.802 85.5367 21.4452ZM89.5406 19.6407C90.0042 19.179 90.236 18.5495 90.236 17.7941C90.236 17.0387 90.0042 16.4092 89.5406 15.9475C89.077 15.4859 88.4869 15.2341 87.7915 15.2341C87.075 15.2341 86.506 15.4649 86.0424 15.9475C85.5788 16.4092 85.368 17.0387 85.368 17.7941C85.368 18.5495 85.5999 19.179 86.0424 19.6407C86.506 20.1023 87.075 20.3541 87.7915 20.3541C88.4869 20.3541 89.077 20.1233 89.5406 19.6407ZM98.3913 13.6184V15.4439C98.2228 15.423 98.0753 15.402 97.9489 15.402C97.1902 15.402 96.6213 15.6118 96.1997 16.0525C95.7783 16.4931 95.5675 17.1226 95.5675 17.92V21.8859H93.6499V13.7023H95.4833V14.8984C96.0101 14.038 96.9794 13.6184 98.3913 13.6184Z" fill="#FF2A23"/>
                     </svg>
-                </div>
+                </a>
                 <div class="header_title_block">
-                    <a href="">How to become a donor?</a>
-                    <a href="">Where to donate blood?</a>
+                    <a href="{% url 'how_become_donor' %}" class="{% if active_page == 'how_become_donor' or active_page == 'requirements' %} active {% endif %}">{% trans "How to become a donor?" %}</a>
+                    <a href="{% url 'where_donate_blood' %}" class="{% if active_page == 'bloodstations' or is_schedule_blood_donation or bloodstations_city %} active {% endif %}">{% trans "Where to donate blood?" %}</a>
+                    <a href="{% url 'urgently_need_donor' %}" class="{% if active_page == 'urgently-need-donor' or is_urgently_need_donor_detail and not find_donor %} active {% endif %}">{% trans "Urgently need donor" %}</a>
+                    <a href="{% url 'search_urgently_need_donor' %}" class="{% if find_donor %} active {% endif %}">{% trans "Find a donor" %}</a>
                 </div>
                 <div class="header_login_block">
                     <div class="regions">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 17.9658C7.33337 18.5646 16 11.1552 16 7.18632C16 3.21743 12.4183 0 8 0C3.58173 0 0 3.21743 0 7.18632C0 11.1552 8 17.9658 8 17.9658ZM8 9.58172C9.4728 9.58172 10.6666 8.50932 10.6666 7.18632C10.6666 5.86336 9.4728 4.79088 8 4.79088C6.5272 4.79088 5.33334 5.86336 5.33334 7.18632C5.33334 8.50932 6.5272 9.58172 8 9.58172Z" fill="#2B2E4A"/>
                         </svg>
-                        <h1>All regions</h1>
+                        <h1>{% trans "All regions" %}</h1>
                     </div>
-                    <div class="login_button">
-                        <a href="{% url 'login' %}">Login</a>
-                    </div>
+                    <form action="{% url 'set_language' %}" method="post" class="language-form">
+                        {% csrf_token %}
+                        <select name="language" onchange="this.form.submit()" class="language-select">
+                            <option value="kk" {% if LANGUAGE_CODE == 'kk' %}selected{% endif %}>KK</option>
+                            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>EN</option>
+                            <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>RU</option>
+                        </select>
+                    </form>
+                    {% if user.is_authenticated %}
+                        <h1 style="font-weight: 500; margin-right: 10px;">{{ user.full_name }}</h1>
+                        <div class="login_button">
+                            <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+                        </div>
+                    {% else %}
+                        <div class="login_button">
+                            <a href="{% url 'login' %}">{% trans 'Login' %}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="section">
+            <div class="content_pages_container">
+                {% if active_page == 'how_become_donor' %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'how_become_donor' %}">{% trans 'How to become a donor?' %}</a>
+                    </div>
+                {% elif active_page == 'requirements' %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'how_become_donor' %}">{% trans 'How to become a donor?' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'base_requirements' %}">{% trans 'Contraindications' %}</a>
+                    </div>
+                {% elif active_page == 'bloodstations' or bloodstations_city %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'where_donate_blood' %}">{% trans 'Where to donate blood?' %}</a>
+                    </div>
+                {% elif is_schedule_blood_donation %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'where_donate_blood' %}">{% trans 'Where to donate blood?' %}</a>
+                    </div>
+                {% elif active_page == 'urgently-need-donor' %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'urgently_need_donor' %}">{% trans 'Urgently need donor' %}</a>
+                    </div>
+                {% elif find_donor %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'urgently_need_donor' %}">{% trans 'Urgently need donor' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'search_urgently_need_donor' %}">{% trans 'Find a donor' %}</a>
+                    </div>
+                {% elif is_urgently_need_donor_detail %}
+                    <div class="content_pages">
+                        <a href="{% url 'home' %}">{% trans 'Main' %}</a>
+                        <span>/</span>
+                        <a href="{% url 'urgently_need_donor' %}">{% trans 'Urgently need donor' %}</a>
+                    </div>
+                {% endif %}
+            </div>
             {% block content %}{% endblock %}
         </div>
+
+        <div class="donation-container">
+            <h2>{% trans 'Support the development of donation' %}</h2>
+
+            <label class="frequency-title">{% trans 'Frequency' %}</label><br/>
+            <div class="frequency-wrapper">
+                <input
+                        type="radio"
+                        id="freqMonthly"
+                        name="frequency"
+                        value="monthly"
+                        checked
+                />
+                <label for="freqMonthly" class="freq-label">{% trans 'Monthly' %}</label>
+
+                <input type="radio" id="freqOnce" name="frequency" value="once"/>
+                <label for="freqOnce" class="freq-label">{% trans 'One-time' %}</label>
+            </div>
+
+            <div class="sums-title">{% trans 'Donation amount' %}</div>
+            <div class="sums-wrapper">
+                <div>
+                    <input type="radio" id="sum100" name="amount" value="100" checked/>
+                    <label for="sum100" class="sum-label">100 T</label>
+                </div>
+                <div>
+                    <input type="radio" id="sum500" name="amount" value="500"/>
+                    <label for="sum500" class="sum-label">500 T</label>
+                </div>
+                <div>
+                    <input type="radio" id="sum1000" name="amount" value="1000"/>
+                    <label for="sum1000" class="sum-label">1000 T</label>
+                </div>
+                <div>
+                    <input type="radio" id="sum5000" name="amount" value="5000"/>
+                    <label for="sum5000" class="sum-label">5000 T</label>
+                </div>
+                <div>
+                    <input type="radio" id="sumOther" name="amount" value="other"/>
+                    <label for="sumOther" class="sum-label sum-other-label">
+                <span class="sum-other-block">
+                  <span style="white-space: nowrap">&nbsp;</span>
+                  <input
+                          type="number"
+                          id="customAmount"
+                          name="customAmount"
+                          min="100"
+                          placeholder=""
+                  />
+                  <span>T</span>
+                </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="hide-amount-block checkbox-row">
+                <input type="checkbox" id="hideAmount"/>
+                <label for="hideAmount">{% trans 'Hide my donation amount in the feed' %}</label>
+            </div>
+
+            <div class="inputs-grid">
+                <input type="text" id="firstName" placeholder="{% trans 'First name' %} *" required/>
+                <input type="text" id="lastName" placeholder="{% trans 'Last name' %} * " required/>
+                <input
+                        type="email"
+                        id="email"
+                        placeholder="example@gmail.com *"
+                        required
+                />
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="hideFio"/>
+                <label for="hideFio">{% trans 'Hide my name in the donation feed' %}</label>
+            </div>
+
+            <div class="comment-area">
+            <textarea
+                    id="comment"
+                    placeholder="{% trans 'Here you can leave a comment or your wishes' %}"
+                    maxlength="256"
+            ></textarea>
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="agreeOffer" required/>
+                <label for="agreeOffer">{% trans 'I agree with the offer' %} *</label>
+            </div>
+            <div class="checkbox-row">
+                <input type="checkbox" id="agreePersonal" required/>
+                <label for="agreePersonal">{% trans 'I agree to the processing of my personal data' %} *</label>
+            </div>
+
+            <div class="donate-btn-container">
+                <button id="donateBtn">{% trans 'Donate' %} 100 T</button>
+            </div>
+        </div>
+
     </div>
 
-    {% block scripts %}{% endblock %}
+    <script type="text/javascript">
+        function toggleLangDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function changeLang(lang) {
+            function trySetLanguage() {
+                const translateEl = document.querySelector('.goog-te-combo');
+                if (translateEl) {
+                    translateEl.value = lang;
+                    translateEl.dispatchEvent(new Event('change'));
+                    document.getElementById('current-lang').textContent = lang.toUpperCase();
+                    document.getElementById('languageDropdown').style.display = 'none';
+                } else {
+                    // Пробуем снова через 200мс
+                    setTimeout(trySetLanguage, 200);
+                }
+            }
+
+            trySetLanguage();
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const sumOtherRadio = document.getElementById("sumOther");
+        const customAmountInput = document.getElementById("customAmount");
+        const amountRadios = document.querySelectorAll('input[name="amount"]');
+
+        const donateBtn = document.getElementById("donateBtn");
+
+        const commentField = document.getElementById("comment");
+        const commentCountSpan = document.getElementById("commentCount");
+
+        commentField.addEventListener("input", () => {
+            const max = commentField.getAttribute("maxlength");
+            const current = commentField.value.length;
+            commentCountSpan.textContent = max - current;
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+            customAmountInput.value = "";
+            donateBtn.textContent = "{% trans 'Donate' %} 100 T";
+        });
+
+        amountRadios.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                if (radio.value === "other") {
+                    customAmountInput.value = "";
+                    customAmountInput.focus();
+                    donateBtn.textContent = "{% trans 'Donate' %}";
+                } else {
+                    customAmountInput.value = "";
+                    donateBtn.textContent = `{% trans 'Donate' %} ${radio.value} T`;
+                }
+            });
+        });
+
+        customAmountInput.addEventListener("input", () => {
+            const val = customAmountInput.value;
+            if (val && +val >= 100) {
+                donateBtn.textContent = `{% trans 'Donate' %} ${val} T`;
+            } else {
+                donateBtn.textContent = "{% trans 'Donate' %}";
+            }
+        });
+
+        donateBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const freqValue = document.querySelector(
+                'input[name="frequency"]:checked'
+            ).value;
+            let amountValue = document.querySelector(
+                'input[name="amount"]:checked'
+            ).value;
+            if (amountValue === "other") {
+                amountValue = customAmountInput.value.trim();
+            }
+            if (amountValue === "other") {
+                amountValue = customAmountInput.value.trim();
+            }
+            const hideAmount = document.getElementById("hideAmount").checked;
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const hideFio = document.getElementById("hideFio").checked;
+            const comment = commentField.value.trim();
+            const agreeOffer = document.getElementById("agreeOffer").checked;
+            const agreePersonal = document.getElementById("agreePersonal").checked;
+
+            if (!agreeOffer || !agreePersonal) {
+                alert("{% trans 'You must agree to the offer and data processing.' %}");
+                return;
+            }
+            if (!firstName || !email) {
+                alert("{% trans 'Please fill in the required fields (Name, E-mail)' %}");
+                return;
+            }
+            if (+amountValue < 100) {
+                alert("{% trans 'Minimum amount' %} 100 T");
+                return;
+            }
+
+            const donationData = {
+                frequency: freqValue,
+                amount: amountValue,
+                hideAmount: hideAmount,
+                firstName,
+                lastName,
+                email,
+                hideFio,
+                comment,
+            };
+
+            fetch("/donate/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: JSON.stringify(donationData),
+            })
+                .then((res) => {
+                    if (!res.ok) throw new Error("{% trans 'The server returned an error' %}");
+                    return res.json();
+                })
+                .then((data) => {
+                    alert("{% trans 'Thank you for your donation!' %}");
+                })
+                .catch((err) => {
+                    alert("{% trans 'There was an error sending your donation.' %}");
+                });
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+            donateBtn.textContent = "{% trans 'Donate' %} 100 T";
+        });
+    </script>
+
+    {% block scripts %}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {% endblock %}
 
 </body>
 </html>

@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-25 13:51+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: dashboard/models.py:6
+msgid "Name"
+msgstr ""
+
+#: templates/base.html:XX
+msgid "Login"
+msgstr "Войти"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "How to become a donor?"
+msgstr "Как стать донором?"
+
+msgid "Where to donate blood?"
+msgstr "Где сдать кровь?"
+
+msgid "Urgently need donor"
+msgstr "Срочно нужен донор"
+
+msgid "Find a donor"
+msgstr "Найти донора"
+
+msgid "All regions"
+msgstr "Все регионы"
+
+msgid "#supportdonor"
+msgstr "#поддержатьдонора"
+
+msgid "A donor is one who gives"
+msgstr "Донор - это тот, кто дает"
+
+msgid "Support"
+msgstr "Поддержать"
+
+msgid "Donor advice"
+msgstr "Советы донора"
+
+msgid "I want to add a piece of advice"
+msgstr "Я хочу добавить совет"
+
+msgid "Experienced donor"
+msgstr "Опытный донор"
+
+msgid "Donations"
+msgstr "Пожертвования"
+
+msgid "Read more"
+msgstr "Читать далее"
+
+msgid "Blood Center Needs"
+msgstr "Центр крови нуждается"
+
+msgid "Required"
+msgstr "Требуется"
+
+msgid "Enough"
+msgstr "Достаточно"
+
+msgid "Join"
+msgstr "Присоединиться"
+
+msgid "City or blood center"
+msgstr "Город или центр крови"
+
+msgid "Blood center"
+msgstr "Центр крови"
+
+msgid "Reset filters"
+msgstr "Сбросить фильтры"
+
+msgid "You can rent without registration"
+msgstr "Вы можете арендовать без регистрации"
+
+msgid "Open on Saturday"
+msgstr "Открыто в субботу"
+
+msgid "Open on Sunday"
+msgstr "Открыто в воскресенье"
+
+msgid "Donation Reminder"
+msgstr "Напоминание о донорстве"
+
+msgid "Select donation type"
+msgstr "Выберите тип донорства"
+
+msgid "After selecting the donation type, the nearest available date will be automatically displayed, taking into account the intervals between donations."
+msgstr "После выбора типа донорства автоматически отобразится ближайшая доступная дата с учетом интервалов между донациями."
+
+msgid "Planned date"
+msgstr "Запланированная дата"
+
+msgid "Select your blood group"
+msgstr "Выберите свою группу крови"
+
+msgid "Type of donation"
+msgstr "Тип донорства"
+
+msgid "Free of charge"
+msgstr "Бесплатно"
+
+msgid "Meals or compensation for meals (5% of the minimum wage, approximately 700-1500 ₸. Taken into account when receiving the title of Honorary Donor.)"
+msgstr "Питание или компенсация питания (5% от МРП, примерно 700-1500 ₸. Учитывается при получении звания Почетного донора.)"
+
+msgid "Paid"
+msgstr "Платно"
+
+msgid "Money or social support. Does not count towards the honorary donor title."
+msgstr "Деньги или социальная поддержка. Не учитывается при получении звания Почетного донора."
+
+msgid "City"
+msgstr "Город"
+
+msgid "Remind about donation"
+msgstr "Напомнить о донорстве"
+
+msgid "Donors urgently needed"
+msgstr "Доноры срочно нужны"
+
+msgid "Blood Donor Consumer Community"
+msgstr "Сообщество потребителей донорской крови"
+
+msgid "Until"
+msgstr "До"
+
+msgid "Looking for"
+msgstr "Ищу"
+
+msgid "are already coming, be the first!"
+msgstr "уже идут, будьте первым!"
+
+msgid "Data to search"
+msgstr "Данные для поиска"
+
+msgid "About the patient"
+msgstr "О пациенте"
+
+msgid "Blood component"
+msgstr "Компонент крови"
+
+msgid "Select one required blood component"
+msgstr "Выберите один необходимый компонент крови"
+
+msgid "Whole blood"
+msgstr "Целая кровь"
+
+msgid "Plasma"
+msgstr "Плазма"
+
+msgid "Platelets"
+msgstr "Тромбоциты"
+
+msgid "Erythrocytes"
+msgstr "Эритроциты"
+
+msgid "Granulocytes"
+msgstr "Гранулоциты"
+
+msgid "Select one or more required blood groups. If any blood group is suitable, select all"
+msgstr "Выберите одну или несколько необходимых групп крови. Если подходит любая группа крови, выберите все"
+
+msgid "Number of donors"
+msgstr "Количество доноров"
+
+msgid "Select city"
+msgstr "Выберите город"
+
+msgid "Select blood center"
+msgstr "Выберите центр крови"
+
+msgid "Donor search end date"
+msgstr "Дата окончания поиска донора"
+
+msgid "Next step"
+msgstr "Следующий шаг"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "Please enter your last name"
+msgstr "Пожалуйста, введите вашу фамилию"
+
+msgid "First name"
+msgstr "Имя"
+
+msgid "Please enter your first name"
+msgstr "Пожалуйста, введите ваше имя"
+
+msgid "Middle name"
+msgstr "Отчество"
+
+msgid "Please enter your middle name"
+msgstr "Пожалуйста, введите ваше отчество"
+
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+msgid "Select date"
+msgstr "Выберите дату"
+
+msgid "Reason requested"
+msgstr "Причина запроса"
+
+msgid "Please indicate the reason for your search"
+msgstr "Пожалуйста, укажите причину вашего поиска"
+
+msgid "Photo of the recipient"
+msgstr "Фото получателя"
+
+msgid "not necessary"
+msgstr "не обязательно"
+
+msgid "Upload or drag a photo into this area"
+msgstr "Загрузите или перетащите фото в эту область"
+
+msgid "Upload file"
+msgstr "Загрузить файл"
+
+msgid "Previous step"
+msgstr "Предыдущий шаг"
+
+msgid "Start searching"
+msgstr "Начать поиск"
+
+msgid "Show less"
+msgstr "Показать меньше"
+
+msgid "Main"
+msgstr "Главная"
+
+msgid "Contraindications"
+msgstr "Противопоказания"
+
+msgid "Support the development of donation"
+msgstr "Поддержите развитие донорства"
+
+msgid "Frequency"
+msgstr "Частота"
+
+msgid "Monthly"
+msgstr "Ежемесячно"
+
+msgid "One-time"
+msgstr "Однократно"
+
+msgid "Donation amount"
+msgstr "Сумма пожертвования"
+
+msgid "Hide my donation amount in the feed"
+msgstr "Скрыть сумму моего пожертвования в ленте"
+
+msgid "Hide my name in the donation feed"
+msgstr "Скрыть мое имя в ленте пожертвований"
+
+msgid "Here you can leave a comment or your wishes"
+msgstr "Здесь вы можете оставить комментарий или свои пожелания"
+
+msgid "I agree with the offer"
+msgstr "Я согласен с предложением"
+
+msgid "I agree to the processing of my personal data"
+msgstr "Я согласен на обработку моих персональных данных"
+
+msgid "Donate"
+msgstr "Пожертвовать"
+
+msgid "You must agree to the offer and data processing."
+msgstr "Вы должны согласиться с предложением и обработкой данных."
+
+msgid "Please fill in the required fields (Name, E-mail)"
+msgstr "Пожалуйста, заполните обязательные поля (Имя, E-mail)"
+
+msgid "Minimum amount"
+msgstr "Минимальная сумма"
+
+msgid "The server returned an error"
+msgstr "Сервер вернул ошибку"
+
+msgid "Thank you for your donation!"
+msgstr "Спасибо за ваше пожертвование!"
+
+msgid "There was an error sending your donation."
+msgstr "Произошла ошибка при отправке вашего пожертвования."
+
+msgid "Please fill in all required fields."
+msgstr "Пожалуйста, заполните все обязательные поля."
+
+msgid "Request sent successfully!"
+msgstr "Запрос успешно отправлен!"
+
+msgid "Error sending form. Please check the entered data."
+msgstr "Ошибка при отправке формы. Проверьте введённые данные."
+
+msgid "Error sending form. Please try again."
+msgstr "Ошибка при отправке формы. Пожалуйста, попробуйте еще раз."
+
+msgid "JPG, GIF, PNG size from 1 kb to 8 mb"
+msgstr "JPG, GIF, PNG размер от 1 кб до 8 мб"
+
+msgid "No data found"
+msgstr "Ничего не найдено"
+
+msgid "Cities"
+msgstr "Города"
+
+msgid "The search for donors continues"
+msgstr "Поиск доноров продолжается"
+
+msgid "Schedule"
+msgstr "Расписание"
+
+msgid "Donors found"
+msgstr "Найденные доноры"
+
+msgid "Reason for searching"
+msgstr "Причина поиска"
+
+msgid "Sign up"
+msgstr "Записаться"
+
+msgid "Successfully signed up for the donation!"
+msgstr "Успешно записались на донорство!"
+
+msgid "Please select a date."
+msgstr "Пожалуйста, выберите дату."

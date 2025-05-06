@@ -3,14 +3,14 @@ from django.db import models
 from authorization.models import User
 
 BLOOD_GROUPS = (
-    ('0+', '0+'),
-    ('0-', '0-'),
-    ('A+', 'A+'),
-    ('A-', 'A-'),
-    ('B+', 'B+'),
-    ('B-', 'B-'),
-    ('AB+', 'AB+'),
-    ('AB-', 'AB-'),
+    ('0plus', '0(I) Rh+'),
+    ('0minus', '0(I) Rh-'),
+    ('Aplus', 'A(II) Rh+'),
+    ('Aminus', 'A(II) Rh-'),
+    ('Bplus', 'B(III) Rh+'),
+    ('Bminus', 'B(III) Rh-'),
+    ('ABplus', 'AB(IV) Rh+'),
+    ('ABminus', 'AB(IV) Rh-'),
 )
 
 DONOR_BLOOD_TYPES = (
@@ -54,8 +54,8 @@ class BloodDonorCenter(models.Model):
 
 
 class Donor(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='donor')
-    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUPS)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='donor', blank=True, null=True)
+    blood_group = models.CharField(max_length=10, choices=BLOOD_GROUPS)
     blood_type = models.CharField(max_length=2, choices=DONOR_BLOOD_TYPES)
     status = models.CharField(max_length=1, choices=DONOR_STATUS, default='A')
     last_donation_date = models.DateField(blank=True, null=True)
@@ -63,7 +63,7 @@ class Donor(models.Model):
     donation_type = models.CharField(max_length=4, choices=DONOR_TYPE)
 
     def __str__(self):
-        return f"{self.author.full_name} - {self.blood_group}"
+        return f"{self.blood_group}"
 
     class Meta:
         verbose_name = 'Donor'
@@ -76,7 +76,7 @@ class Recipient(models.Model):
     recipient_phone_number = models.CharField(max_length=25)
     recipient_address = models.CharField(max_length=200)
     recipient_reference = models.FileField(upload_to='recipient/references/', blank=True, null=True)
-    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUPS)
+    blood_group = models.CharField(max_length=10, choices=BLOOD_GROUPS)
     blood_type = models.CharField(max_length=2, choices=DONOR_BLOOD_TYPES)
     is_urgent = models.BooleanField(default=False)
     description = models.TextField()
@@ -111,7 +111,7 @@ class DonationCenterRequests(models.Model):
     center = models.ForeignKey(BloodDonorCenter, on_delete=models.CASCADE, related_name='center_requests')
     request_date = models.DateTimeField(auto_now_add=True)
     donor_blood_type = models.CharField(max_length=2, choices=DONOR_BLOOD_TYPES)
-    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUPS, blank=True, null=True)
+    blood_group = models.CharField(max_length=10, choices=BLOOD_GROUPS, blank=True, null=True)
     donor_type = models.CharField(max_length=4, choices=DONOR_TYPE)
     count = models.IntegerField(blank=True, null=True)
     any_blood_group = models.BooleanField(default=False)
@@ -131,3 +131,91 @@ class DonationCenterRequests(models.Model):
         if count_donations < self.count:
             return "required"
         return "enough"
+
+
+class DonorAdvice(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='donor_advice')
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Donor Advice'
+        verbose_name_plural = 'Donor Advices'
+        db_table = 'donor_advices'
+
+    def get_count_donor_donations(self):
+        return Donor.objects.filter(author=self.author).count()
+
+
+class UrgentDonorRequest(models.Model):
+    BLOOD_COMPONENTS = (
+        ('WB', 'Whole blood'),
+        ('PS', 'Plasma'),
+        ('PL', 'Platelets'),
+        ('ER', 'Erythrocytes'),
+        ('GR', 'Granulocytes'),
+    )
+
+    blood_components = models.CharField(max_length=2, choices=BLOOD_COMPONENTS)
+    blood_group = models.CharField(max_length=10, choices=BLOOD_GROUPS)
+    donor_count = models.PositiveIntegerField(default=1)
+
+    city = models.CharField(max_length=100)
+    center = models.ForeignKey(BloodDonorCenter, on_delete=models.SET_NULL, null=True, blank=True)
+    deadline = models.DateField()
+
+    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    middle_name = models.CharField(max_length=100, blank=True, null=True)
+    birth_date = models.DateField(null=True, blank=True)
+    reason = models.TextField()
+    photo = models.ImageField(upload_to='urgent_requests/photos/', null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.last_name} {self.first_name} — {self.blood_components}, {self.donor_count} доноров"
+
+    class Meta:
+        verbose_name = 'Urgent Donor Request'
+        verbose_name_plural = 'Urgent Donor Requests'
+        db_table = 'urgent_donor_requests'
+
+    def get_donor_count(self):
+        return UrgentDonorRequestHistory.objects.filter(urgent_donor_request=self).count()
+
+
+class UrgentDonorRequestHistory(models.Model):
+    urgent_donor_request = models.ForeignKey(UrgentDonorRequest, on_delete=models.CASCADE, related_name='urgent_donor_request')
+    donor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='donor_user')
+    donation_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.urgent_donor_request} - {self.donor}"
+
+    class Meta:
+        verbose_name = 'Urgent Donor Request History'
+        verbose_name_plural = 'Urgent Donor Request Histories'
+        db_table = 'urgent_donor_request_histories'
+
+
+class Donate(models.Model):
+    frequency = models.CharField(max_length=100)
+    amount = models.CharField(max_length=100)
+    hideAmount = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    hideFio = models.BooleanField(default=False)
+    comment = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.frequency}"
+
+    class Meta:
+        verbose_name = 'Donate'
+        verbose_name_plural = 'Donates'
+        db_table = 'donates'

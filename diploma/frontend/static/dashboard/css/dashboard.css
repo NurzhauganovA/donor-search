@@ -54,13 +54,53 @@
 .main_title_blood_center_needs_block {
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.slider-wrapper-centers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.slider-viewport-centers {
+  flex: 1;
+  overflow: hidden;
+}
+
+.slider-track-centers {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.cart_block_blood_center_needs {
+  flex: 0 0 calc(100% / 3 - 20px); /* по 3 карточки */
+  margin: 0 10px;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.slider-button {
+  background-color: #FF2A23;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
 }
 
 .main_data_blood_center_needs {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    margin-top: 100px;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*gap: 50px;*/
 }
 
 .cart_block_blood_center_needs {
@@ -69,7 +109,6 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    width: 380px;
 }
 
 .title_cart_block h1 {
@@ -79,7 +118,7 @@
 
 .title_cart_block p {
     margin: 10px 0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -101,14 +140,14 @@
 }
 
 .need_main_info_cart_block h1, .enough_main_info_cart_block h1 {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     margin-right: 10px;
 }
 
 .need_main_info_cart_block div, .enough_main_info_cart_block div {
-    width: 7px;
-    height: 7px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
 }
 
@@ -129,8 +168,8 @@
 }
 
 .cart_blood_group_block {
-    width: 80px;
-    height: 60px;
+    width: 100px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,4 +217,129 @@
     color: #FFF;
     font-size: 14px;
     font-weight: 500;
+}
+
+.donor-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 50px 0;
+}
+
+.donor-actions h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.donor-actions a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FF2A23;
+}
+
+.donor-advice-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.slider-viewport {
+    flex: 1;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.donor-card {
+    flex: 0 0 calc(100% / 3 - 20px); /* Показываем 3 карточки */
+    margin: 0 10px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    position: relative;
+}
+
+.donor-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.donor-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.donor-badge {
+    background-color: #50396a;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.donation-count {
+    font-size: 15px;
+    font-weight: 600;
+    color: #606060;
+    margin: 10px 0;
+}
+
+.donor-advice-wrapper {
+    position: relative;
+}
+
+.donor-advice-text {
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 1.5;
+    max-height: 120px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    will-change: max-height;
+}
+
+.read-more-btn {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #FF2A23;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+}
+
+.donor-card.expanded .donor-advice-text {
+    max-height: none;
+}
+
+.slider-button {
+    background-color: #FF2A23;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
 }

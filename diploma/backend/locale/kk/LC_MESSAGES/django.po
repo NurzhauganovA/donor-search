@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-25 13:51+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: dashboard/models.py:6
+msgid "Name"
+msgstr ""
+
+#: templates/base.html:XX
+msgid "How to become a donor?"
+msgstr "Донор болу жолы?"
+
+msgid "Where to donate blood?"
+msgstr "Қанды қайда тапсыруға болады?"
+
+msgid "Urgently need donor"
+msgstr "Шұғыл донор керек"
+
+msgid "Find a donor"
+msgstr "Донор табу"
+
+msgid "All regions"
+msgstr "Барлық өңірлер"
+
+msgid "Login"
+msgstr "Кіру"
+
+msgid "Logout"
+msgstr "Шығу"
+
+msgid "#supportdonor"
+msgstr "#донордықолдау"
+
+msgid "A donor is one who gives"
+msgstr "Донор — беруші адам"
+
+msgid "Support"
+msgstr "Қолдау көрсету"
+
+msgid "Donor advice"
+msgstr "Донор кеңесі"
+
+msgid "I want to add a piece of advice"
+msgstr "Кеңес қосқым келеді"
+
+msgid "Experienced donor"
+msgstr "Тәжірибелі донор"
+
+msgid "Donations"
+msgstr "Қайырымдылықтар"
+
+msgid "Read more"
+msgstr "Көбірек оқу"
+
+msgid "Blood Center Needs"
+msgstr "Қан орталығының сұранысы"
+
+msgid "Required"
+msgstr "Қажет"
+
+msgid "Enough"
+msgstr "Жеткілікті"
+
+msgid "Join"
+msgstr "Қосылу"
+
+msgid "City or blood center"
+msgstr "Қала немесе қан орталығы"
+
+msgid "Blood center"
+msgstr "Қан орталығы"
+
+msgid "Reset filters"
+msgstr "Фильтрлерді тазалау"
+
+msgid "You can rent without registration"
+msgstr "Тіркелусіз жалға алуға болады"
+
+msgid "Open on Saturday"
+msgstr "Сенбі күні ашық"
+
+msgid "Open on Sunday"
+msgstr "Жексенбі күні ашық"
+
+msgid "Donation Reminder"
+msgstr "Қан тапсыру еске салғышы"
+
+msgid "Select donation type"
+msgstr "Донорлық түрін таңдаңыз"
+
+msgid "After selecting the donation type, the nearest available date will be automatically displayed, taking into account the intervals between donations."
+msgstr "Донорлық түрін таңдағаннан кейін, қан тапсыру аралықтары ескеріліп, ең жақын қолжетімді күн автоматты түрде көрсетіледі."
+
+msgid "Planned date"
+msgstr "Жоспарланған күн"
+
+msgid "Select your blood group"
+msgstr "Қан тобыңызды таңдаңыз"
+
+msgid "Type of donation"
+msgstr "Донорлық түрі"
+
+msgid "Free of charge"
+msgstr "Тегін"
+
+msgid "Meals or compensation for meals (5% of the minimum wage, approximately 700-1500 ₸. Taken into account when receiving the title of Honorary Donor.)"
+msgstr "Тамақтану немесе тамақтануға өтемақы (МРП-ның 5%, шамамен 700-1500 ₸. Құрметті Донор атағын алуда ескеріледі.)"
+
+msgid "Paid"
+msgstr "Ақылы"
+
+msgid "Money or social support. Does not count towards the honorary donor title."
+msgstr "Ақша немесе әлеуметтік көмек. Құрметті Донор атағына есептелмейді."
+
+msgid "City"
+msgstr "Қала"
+
+msgid "Remind about donation"
+msgstr "Қан тапсыру туралы еске салу"
+
+msgid "Donors urgently needed"
+msgstr "Шұғыл донорлар қажет"
+
+msgid "Blood Donor Consumer Community"
+msgstr "Қан донорлары қауымдастығы"
+
+msgid "Until"
+msgstr "Дейін"
+
+msgid "Looking for"
+msgstr "Іздеу"
+
+msgid "are already coming, be the first!"
+msgstr "жолда, бірінші болыңыз!"
+
+msgid "Data to search"
+msgstr "Іздеу деректері"
+
+msgid "About the patient"
+msgstr "Пациент туралы"
+
+msgid "Blood component"
+msgstr "Қан компоненті"
+
+msgid "Select one required blood component"
+msgstr "Қажетті қан компонентін таңдаңыз"
+
+msgid "Whole blood"
+msgstr "Толық қан"
+
+msgid "Plasma"
+msgstr "Плазма"
+
+msgid "Platelets"
+msgstr "Тромбоциттер"
+
+msgid "Erythrocytes"
+msgstr "Эритроциттер"
+
+msgid "Granulocytes"
+msgstr "Гранулоциттер"
+
+msgid "Select one or more required blood groups. If any blood group is suitable, select all"
+msgstr "Бір немесе бірнеше қажет қан тобын таңдаңыз. Егер кез келген топ жараса, барлығын таңдаңыз"
+
+msgid "Number of donors"
+msgstr "Донор саны"
+
+msgid "Select city"
+msgstr "Қаланы таңдаңыз"
+
+msgid "Select blood center"
+msgstr "Қан орталығын таңдаңыз"
+
+msgid "Donor search end date"
+msgstr "Донорды іздеу аяқталу күні"
+
+msgid "Next step"
+msgstr "Келесі қадам"
+
+msgid "Last name"
+msgstr "Тегі"
+
+msgid "Please enter your last name"
+msgstr "Тегіңізді енгізіңіз"
+
+msgid "First name"
+msgstr "Аты"
+
+msgid "Please enter your first name"
+msgstr "Атыңызды енгізіңіз"
+
+msgid "Middle name"
+msgstr "Әкесінің аты"
+
+msgid "Please enter your middle name"
+msgstr "Әкесінің атын енгізіңіз"
+
+msgid "Date of birth"
+msgstr "Туған күні"
+
+msgid "Select date"
+msgstr "Күнді таңдаңыз"
+
+msgid "Reason requested"
+msgstr "Сұраныс себебі"
+
+msgid "Please indicate the reason for your search"
+msgstr "Іздеу себебін көрсетіңіз"
+
+msgid "Photo of the recipient"
+msgstr "Алушының фотосы"
+
+msgid "not necessary"
+msgstr "міндетті емес"
+
+msgid "Upload or drag a photo into this area"
+msgstr "Фотосуретті жүктеңіз немесе осы аймаққа апарыңыз"
+
+msgid "Upload file"
+msgstr "Файлды жүктеу"
+
+msgid "Previous step"
+msgstr "Алдыңғы қадам"
+
+msgid "Start searching"
+msgstr "Іздеуді бастау"
+
+msgid "Show less"
+msgstr "Аз көрсету"
+
+msgid "Main"
+msgstr "Басты бет"
+
+msgid "Contraindications"
+msgstr "Қарсы көрсетілімдер"
+
+msgid "Support the development of donation"
+msgstr "Донорлықты дамытуға қолдау көрсету"
+
+msgid "Frequency"
+msgstr "Жиілік"
+
+msgid "Monthly"
+msgstr "Ай сайын"
+
+msgid "One-time"
+msgstr "Бір реттік"
+
+msgid "Donation amount"
+msgstr "Қайырымдылық сомасы"
+
+msgid "Hide my donation amount in the feed"
+msgstr "Қайырымдылық сомасын лентада жасыру"
+
+msgid "Hide my name in the donation feed"
+msgstr "Атымды қайырымдылық лентасында жасыру"
+
+msgid "Here you can leave a comment or your wishes"
+msgstr "Мұнда пікір немесе тілектеріңізді қалдыра аласыз"
+
+msgid "I agree with the offer"
+msgstr "Мен ұсыныспен келісемін"
+
+msgid "I agree to the processing of my personal data"
+msgstr "Мен жеке деректерімді өңдеуге келісемін"
+
+msgid "Donate"
+msgstr "Қайырымдылық жасау"
+
+msgid "You must agree to the offer and data processing."
+msgstr "Ұсыныспен және деректерді өңдеумен келісуіңіз қажет."
+
+msgid "Please fill in the required fields (Name, E-mail)"
+msgstr "Міндетті өрістерді толтырыңыз (Аты, E-mail)"
+
+msgid "Minimum amount"
+msgstr "Ең төменгі сома"
+
+msgid "The server returned an error"
+msgstr "Сервер қате қайтарды"
+
+msgid "Thank you for your donation!"
+msgstr "Қайырымдылығыңыз үшін рахмет!"
+
+msgid "There was an error sending your donation."
+msgstr "Қайырымдылық жіберу кезінде қате орын алды."
+
+msgid "Please fill in all required fields."
+msgstr "Барлық міндетті өрістерді толтырыңыз."
+
+msgid "Request sent successfully!"
+msgstr "Сұраныс сәтті жіберілді!"
+
+msgid "Error sending form. Please check the entered data."
+msgstr "Форманы жіберу қатесі. Енгізілген деректерді тексеріңіз."
+
+msgid "Error sending form. Please try again."
+msgstr "Форманы жіберу қатесі. Қайтадан көріңіз."
+
+msgid "JPG, GIF, PNG size from 1 kb to 8 mb"
+msgstr "JPG, GIF, PNG өлшемі 1 кб-тан 8 мб-қа дейін"
+
+msgid "No data found"
+msgstr "Деректер табылмады"
+
+msgid "Cities"
+msgstr "Қалалар"
+
+msgid "The search for donors continues"
+msgstr "Донорларды іздеу жалғасуда"
+
+msgid "Schedule"
+msgstr "Кесте"
+
+msgid "Donors found"
+msgstr "Донорлар табылды"
+
+msgid "Reason for searching"
+msgstr "Іздеу себебі"
+
+msgid "Sign up"
+msgstr "Тіркелу"
+
+msgid "Successfully signed up for the donation!"
+msgstr "Қан тапсыруға сәтті тіркелдіңіз!"
+
+msgid "Please select a date."
+msgstr "Күнді таңдаңыз."

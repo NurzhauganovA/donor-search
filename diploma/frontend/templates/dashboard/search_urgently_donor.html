@@ -1,0 +1,387 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/search_urgently_donor.css' %}">
+{% endblock %}
+
+{% block title %} Donor - Search urgently donor {% endblock %}
+
+{% block page_title %} Search urgently donor {% endblock %}
+
+{% block content %}
+    <div class="urgently_section">
+        <div class="urgently_container">
+            <div class="form-steps">
+                <div class="step step-active first_step" onclick="firstStepContainer()">
+                    <span id="first-step-span">1</span>
+                    <p>{% trans "Data to search" %}</p>
+                </div>
+                <div class="step second_step" onclick="secondStepContainer()">
+                    <span>2</span>
+                    <p>{% trans "About the patient" %}</p>
+                </div>
+            </div>
+            <div class="first_step_container">
+                <!-- Компонент крови -->
+                <div class="blood-components">
+                    <div class="section-pre-title">{% trans "Blood component" %}</div>
+                    <div class="section-title">{% trans "Select one required blood component" %}</div>
+                    <!-- Каждый радиоинпут + label -->
+                    <input type="radio" id="radio-whole" name="component" value="WB" checked>
+                    <label for="radio-whole">
+                        <img src="https://donorsearch.org/static/images/icons/blood.svg" alt="">
+                        {% trans "Whole blood" %}
+                    </label>
+
+                    <input type="radio" id="radio-plasma" name="component" value="PS">
+                    <label for="radio-plasma">
+                        <img src="https://donorsearch.org/static/images/icons/plasma.svg" alt="">
+                        {% trans "Plasma" %}
+                    </label>
+
+                    <input type="radio" id="radio-platelets" name="component" value="PL">
+                    <label for="radio-platelets">
+                        <img src="https://donorsearch.org/static/images/icons/trombs.svg" alt="">
+                        {% trans "Platelets" %}
+                    </label>
+
+                    <input type="radio" id="radio-erythrocytes" name="component" value="ER">
+                    <label for="radio-erythrocytes">
+                        <img src="https://donorsearch.org/static/images/icons/erythrocytes.svg" alt="">
+                        {% trans "Erythrocytes" %}
+                    </label>
+
+                    <input type="radio" id="radio-granulocytes" name="component" value="GR">
+                    <label for="radio-granulocytes">
+                        <img src="https://donorsearch.org/static/images/icons/leukocytes.svg" alt="">
+                        {% trans "Granulocytes" %}
+                    </label>
+                </div>
+
+                <!-- Группа крови -->
+                <div class="blood-groups">
+                    <div class="section-pre-title">Blood group</div>
+                    <div class="section-title">{% trans "Select one or more required blood groups. If any blood group is suitable, select all" %}</div>
+
+                    <!-- Каждый чекбокс + label -->
+                    <input type="radio" id="bg-0plus" name="bloodGroup" value="0plus">
+                    <label for="bg-0plus">0(I) Rh+</label>
+
+                    <input type="radio" id="bg-0minus" name="bloodGroup" value="0minus">
+                    <label for="bg-0minus">0(I) Rh-</label>
+
+                    <input type="radio" id="bg-Aplus" name="bloodGroup" value="Aplus">
+                    <label for="bg-Aplus">A(II) Rh+</label>
+
+                    <input type="radio" id="bg-Aminus" name="bloodGroup" value="Aminus">
+                    <label for="bg-Aminus">A(II) Rh-</label>
+
+                    <br>
+
+                    <input type="radio" id="bg-Bplus" name="bloodGroup" value="Bplus">
+                    <label for="bg-Bplus">B(III) Rh+</label>
+
+                    <input type="radio" id="bg-Bminus" name="bloodGroup" value="Bminus">
+                    <label for="bg-Bminus">B(III) Rh-</label>
+
+                    <input type="radio" id="bg-ABplus" name="bloodGroup" value="ABplus">
+                    <label for="bg-ABplus">AB(IV) Rh+</label>
+
+                    <input type="radio" id="bg-ABminus" name="bloodGroup" value="ABminus">
+                    <label for="bg-ABminus">AB(IV) Rh-</label>
+                </div>
+
+                <!-- Количество доноров -->
+                <div class="section-pre-title">{% trans "Number of donors" %}</div>
+                <div class="donor-count">
+                    <i id="minusBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-dash-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path>
+                        </svg>
+                    </i>
+                    <span id="donorValue">5</span>
+                    <i id="plusBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                        </svg>
+                    </i>
+                </div>
+
+                <!-- Остальные поля формы (город, дата и т.д.) -->
+                <div class="form-group">
+                    <label for="city">{% trans "City" %}</label>
+                    <select id="city-select">
+                        <option value="" disabled selected>{% trans "Select city" %}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="center">{% trans "Blood center" %}</label>
+                    <select id="center-select">
+                        <option value="" disabled selected>{% trans "Select blood center" %}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">{% trans "Donor search end date" %}</label>
+                    <input type="date" id="endDate">
+                </div>
+
+                <button class="btn-next-step btn-custom" id="nextStep" onclick="secondStepContainer()">{% trans "Next step" %}</button>
+            </div>
+
+            <div class="second_step_container">
+                <div class="form_block">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="lastName">{% trans "Last name" %}</label>
+                            <input type="text" id="lastName" placeholder="{% trans 'Please enter your last name' %}">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">{% trans "First name" %}</label>
+                            <input type="text" id="firstName" placeholder="{% trans 'Please enter your first name' %}">
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="middleName">{% trans "Middle name" %}<span
+                                    style="color: #888; font-weight: 400;">- {% trans 'not necessary' %}</span></label>
+                            <input type="text" id="middleName" placeholder="{% trans 'Please enter your middle name' %}">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate">{% trans "Date of birth" %}</label>
+                            <input type="date" id="birthDate" placeholder="{% trans 'Select date' %}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">{% trans "Reason requested" %}</label>
+                        <textarea id="reason" rows="10" maxlength="2000" placeholder="{% trans 'Please indicate the reason for your search' %}"></textarea>
+                        <div class="text-count"><span id="reasonCount">0</span>/2000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photoUpload">{% trans 'Photo of the recipient' %} <span style="color: #888; font-weight: 400;">- {% trans 'not necessary' %}</span></label>
+
+                        <div class="photo-drop-area" id="photoDrop">
+                            <!-- 👇 Превью загруженного фото -->
+                            <div class="preview_image">
+                                <img id="previewImage" src="" alt="Preview"
+                                 style="display: none; max-width: 100%; border-radius: 8px; margin-bottom: 12px;"/>
+                            </div>
+                            <p>{% trans 'Upload or drag a photo into this area' %}</p>
+                            <p class="photo-subtext">{% trans 'JPG, GIF, PNG size from 1 kb to 8 mb' %}</p>
+                            <label for="photoUpload" class="upload-label">{% trans 'Upload file' %}</label>
+                            <input type="file" id="photoUpload" style="display: none;" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-prev-step btn-custom" id="prevStep" onclick="firstStepContainer()">{% trans 'Previous step' %}</button>
+                <button style="background-color: #28a745" class="btn-search-start btn-custom" id="searchStart" onclick="searchStart()">{% trans 'Start searching' %}</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        document.getElementById('photoUpload').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('previewImage');
+
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const citySelect = document.getElementById('city-select');
+            const centerSelect = document.getElementById('center-select');
+
+            // Загружаем список городов
+            fetch('/api/get_unique_cities/')
+                .then(response => response.json())
+                .then(data => {
+                    data.cities.forEach(city => {
+                        console.log(city);
+                        let option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                });
+
+            // Когда выбран город — загружаем центры
+            citySelect.addEventListener('change', () => {
+                const selectedCity = citySelect.value;
+
+                // Очищаем центры
+                centerSelect.innerHTML = '<option disabled selected>{% trans "Select blood center" %}</option>';
+
+                fetch(`/api/get_blood_donation_centers_by_city/?city=${encodeURIComponent(selectedCity)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.centers.forEach(center => {
+                            const option = document.createElement('option');
+                            option.value = center.id;
+                            option.textContent = center.name;
+                            centerSelect.appendChild(option);
+                        });
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        const donorValue = document.getElementById('donorValue');
+        const minusBtn = document.getElementById('minusBtn');
+        const plusBtn = document.getElementById('plusBtn');
+        const bloodGroups = document.querySelector('input[name="bloodGroup"]:checked');
+        const bloodComponent = document.querySelector('input[name="component"]:checked').value;
+        const city = document.getElementById('city-select');
+        const center = document.getElementById('city-select');
+        const endDate = document.getElementById('endDate');
+
+        // Увеличение/уменьшение количества доноров
+        plusBtn.addEventListener('click', () => {
+            if (parseInt(donorValue.textContent) < 10) {
+                donorValue.textContent = parseInt(donorValue.textContent) + 1;
+            }
+        });
+        minusBtn.addEventListener('click', () => {
+            if (parseInt(donorValue.textContent) > 1) {
+                donorValue.textContent = parseInt(donorValue.textContent) - 1;
+            }
+        });
+
+        function checkAllFieldsFilled(step) {
+            if (step === 1) {
+                // Получаем все выбранные группы крови
+                const selectedGroups = Array.from(document.querySelectorAll('input[name="bloodGroup"]:checked'));
+
+                // Проверка всех полей
+                return (
+                    selectedGroups.length > 0 &&
+                    document.querySelector('input[name="component"]:checked') &&
+                    city.value &&
+                    center.value &&
+                    endDate.value
+                );
+            }
+            if (step === 2) {
+                // Проверка всех полей
+                return (
+                    document.getElementById('lastName').value &&
+                    document.getElementById('firstName').value &&
+                    document.getElementById('birthDate').value &&
+                    document.getElementById('reason').value
+                );
+            }
+        }
+
+        function firstStepContainer() {
+            document.querySelector('.first_step_container').style.display = 'block';
+            document.querySelector('.second_step_container').style.display = 'none';
+            document.querySelector('.first_step').classList.add('step-active');
+            document.querySelector('.first_step').classList.remove('step-done');
+            document.getElementById('first-step-span').innerText = '1';
+            document.querySelector('.second_step').classList.remove('step-active');
+        }
+
+        function secondStepContainer() {
+            // check if all fields are filled
+            if (checkAllFieldsFilled(1)) {
+                // Proceed to the next step
+                document.querySelector('.first_step_container').style.display = 'none';
+                document.querySelector('.second_step_container').style.display = 'block';
+                document.querySelector('.first_step').classList.remove('step-active');
+                document.querySelector('.first_step').classList.add('step-done');
+                document.getElementById('first-step-span').innerText = '✓';
+                document.querySelector('.second_step').classList.add('step-active');
+            } else {
+                // Show an alert or handle the error
+                alert('{% trans "Please fill in all required fields." %}');
+            }
+        }
+
+        function getCSRFToken() {
+            const cookie = document.cookie.split(';').find(c => c.trim().startsWith('csrftoken='));
+            return cookie ? cookie.split('=')[1] : '';
+        }
+
+        function searchStart() {
+            const formData = new FormData();
+
+            // Шаг 1: данные для поиска
+            const selectedComponent = document.querySelector('input[name="component"]:checked');
+            const selectedBloodGroups = Array.from(document.querySelectorAll('input[name="bloodGroup"]:checked'))
+                .map(cb => cb.value);
+
+            formData.append('blood_components', selectedComponent.value);
+            formData.append('blood_group', selectedBloodGroups[0]);  // если ты хранишь 1 группу, иначе отправляй JSON
+            formData.append('donor_count', parseInt(document.getElementById('donorValue').textContent));
+            formData.append('city', document.getElementById('city-select').value);
+            formData.append('center', document.getElementById('center-select').value);
+            formData.append('deadline', document.getElementById('endDate').value);
+
+            // Шаг 2: о пациенте
+            formData.append('last_name', document.getElementById('lastName').value);
+            formData.append('first_name', document.getElementById('firstName').value);
+            formData.append('middle_name', document.getElementById('middleName').value);
+            formData.append('birth_date', document.getElementById('birthDate').value);
+            formData.append('reason', document.getElementById('reason').value);
+
+            const photoUpload = document.getElementById('photoUpload').files[0];
+            if (photoUpload) {
+                formData.append('photo', photoUpload);
+            }
+
+            if (!checkAllFieldsFilled(2)) {
+                alert('{% trans "Please fill in all required fields." %}');
+                return;
+            }
+
+            fetch("{% url 'create_urgently_donor_request' %}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCSRFToken(), // обязательно!
+                },
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("{% trans 'Request sent successfully!' %}");
+                    window.location.href = "{% url 'urgently_need_donor' %}";
+                } else {
+                    return response.json().then(data => {
+                        console.error(data);
+                        alert("{% trans 'Error sending form. Please check the entered data.' %}");
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert("{% trans 'Error sending form. Please try again.' %}");
+            });
+        }
+
+    </script>
+
+{% endblock %}

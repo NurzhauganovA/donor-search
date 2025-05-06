@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/how_become_donor.css' %}">
+{% endblock %}
+
+{% block title %} Donor - How to become a donor? {% endblock %}
+
+{% block page_title %} How to become a donor? {% endblock %}
+
+{% block content %}
+    <div class="how_become_container">
+        <h1>How to Become a Donor?</h1>
+        <ol>
+            <li>Make sure you don't have any <a href="{% url 'base_requirements' %}">contraindications</a> to donating blood.</li>
+            <li>Choose the <a href="{% url 'where_donate_blood' %}">nearest blood center</a>, check their needs by phone, and <a
+                    href="#">schedule</a> a donation. If you're not yet registered on DonorSearch, sign up so we can
+                remind you of your appointment and send recommendations.
+            </li>
+            <li>On the scheduled day, go to the blood center — don't forget your passport! (Some regions may require
+                local registration.)
+            </li>
+            <li>After your donation, you'll receive a certificate — take a photo and upload it to your <a href="#">personal
+                account</a>. Once verified, your donation will appear in your profile and you'll receive bonuses from
+                friends and project partners.
+            </li>
+        </ol>
+
+        <h2>How to Prepare for Blood Donation?</h2>
+        <ul>
+            <li>Avoid fatty, fried, spicy, and smoked foods on the day before and the day of donation. Avoid dairy,
+                eggs, oils, nuts, dates, bananas, and avocados.
+            </li>
+            <li>For 48 hours before donation, do not consume alcohol. For 72 hours, avoid medications like aspirin and
+                analgesics.
+            </li>
+            <li>Eat a light breakfast in the morning. Do not donate blood on an empty stomach!</li>
+        </ul>
+
+        <h2>What to Do After Donating Blood?</h2>
+        <ul>
+            <li>If you feel dizzy or weak, inform the staff. Lie down and raise your legs above head level or sit and
+                put your head between your knees.
+            </li>
+            <li>Avoid smoking for at least 2 hours before and after donation.</li>
+            <li>Keep the bandage on for 3–4 hours and avoid getting it wet.</li>
+            <li>Avoid heavy physical activity for 24 hours.</li>
+            <li>Do not drink alcohol for 24 hours.</li>
+            <li>Eat well and drink plenty of fluids for 2 days.</li>
+            <li>You may receive vaccinations 10 days after donation.</li>
+            <li>You cannot donate blood immediately after scuba diving.</li>
+            <li>Do not ride a motorcycle for 2 hours after donation.</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

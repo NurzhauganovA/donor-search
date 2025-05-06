@@ -1,0 +1,41 @@
+.how_become_container h1,
+.how_become_container h2 {
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.how_become_container h1 {
+    font-size: 30px;
+}
+
+.how_become_container h2 {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+.how_become_container ol,
+.how_become_container ul {
+    margin-left: 25px;
+    line-height: 1.7;
+}
+
+.how_become_container li {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+
+.how_become_container a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.how_become_container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .how_become_container {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,335 @@
+.urgent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.urgent-header h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.find-donor-link {
+    color: #ff3b30;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.urgent-donor-cards {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.donor-card {
+    flex: 0 0 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-top {
+    background: linear-gradient(160deg, #c82d46, #da3a6d);
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.blood-type-info {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 6px;
+}
+
+.deadline {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.blood-group {
+    margin: 30px 0 30px;
+    font-size: 18px;
+    font-weight: 500;
+    background: white;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 12px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.card-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 14px;
+    color: #444;
+}
+
+.location {
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.participants {
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 12px;
+    padding: 0 20px;
+}
+
+.seeker {
+    color: #888;
+    margin-bottom: 6px;
+    padding: 20px 20px 10px 20px;
+}
+
+.org-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px 20px 20px;
+}
+
+.org-logo {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.org-name {
+    color: #000;
+    font-weight: 500;
+}
+
+.slider-wrapper-centers {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.slider-viewport-centers {
+    flex: 1;
+    overflow: hidden;
+}
+
+.slider-track-centers {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.cart_block_blood_center_needs {
+    flex: 0 0 calc(100% / 4 - 20px); /* по 3 карточки */
+    margin: 0 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.slider-button {
+    background-color: #FF2A23;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.detail_donor_data {
+    background-color: #FFF;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.search_donors_continues {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ededed;
+    padding: 8px 14px;
+    border-radius: 5px;
+}
+
+.search_donors_continues h1 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #4c4c4c;
+}
+
+.until_time_donor_block {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.until_time_donor_block h1 {
+    color: #4c4c4c;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.main_donor_looking_for_block {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.img_block_donor_looking {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title_block_donor_looking {
+    display: flex;
+    flex-direction: column;
+}
+
+.full_name_donor_looking h1 {
+    font-size: 44px;
+    font-weight: 600;
+}
+
+.info_donor_looking {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.blood_component_info,
+.blood_group_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #c1c1c1;
+    padding: 12px 25px;
+    border-radius: 7px;
+}
+
+.blood_component_info h1,
+.blood_group_info h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4c4c4c;
+}
+
+.donor_center_info_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.donor_center_name_block,
+.donor_center_address_block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.donor_center_name_block img {
+    width: 24px;
+}
+
+.donor_center_name_block h1,
+.donor_center_address_block h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #4c4c4c;
+}
+
+.schedule_for_donation {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 50px 0 20px 0;
+}
+
+.schedule_donation_block {
+    width: 70%;
+    background-color: #e6e6e6;
+    padding: 40px;
+}
+
+.select_date_schedule {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.form_group {
+    margin: 20px 0;
+}
+
+.selected-date {
+    background-color: #000;
+    color: #fff;
+}
+
+.donors_found h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4c4c4c;
+}
+
+.schedule_donation_block button {
+    margin-top: 50px;
+    background-color: #FF2A23;
+    color: #FFF;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.reason_for_searching {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.reason_for_searching h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.reason_for_searching p {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #4c4c4c;
+}
+

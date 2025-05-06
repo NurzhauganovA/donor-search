@@ -133,7 +133,7 @@
     font-weight: 600;
 }
 
-.blood_center_donation_block {
+.blood_center_donation_block, .blood_group_block {
     display: inline-flex;
     flex-direction: column;
     gap: 20px;
@@ -202,6 +202,11 @@
 }
 
 .donation_type_button.active {
+    background-color: #ff3b3b;
+    color: #FFF;
+}
+
+.donation_group_button.active {
     background-color: #ff3b3b;
     color: #FFF;
 }

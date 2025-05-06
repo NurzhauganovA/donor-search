@@ -36,9 +36,7 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1;
 }
-ol, ul {
-  list-style: none;
-}
+
 blockquote, q {
   quotes: none;
 }
@@ -90,6 +88,11 @@ body {
     font-weight: 500;
 }
 
+.header_title_block a.active {
+    color: #FF2A23;
+    font-weight: 700;
+}
+
 .header_title_block a:hover {
     text-decoration: underline;
 }
@@ -119,7 +122,254 @@ body {
     color: #FFF;
 }
 
+.language-form {
+    margin: 0 20px;
+}
+
+.language-select {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.language-select:hover {
+    background-color: #e6e6e6;
+}
+
+.language-select:focus {
+    outline: none;
+    border-color: #ff2a23;
+    box-shadow: 0 0 4px rgba(255, 42, 35, 0.5);
+}
+
+.language-select option[selected] {
+    font-weight: bold;
+    background-color: #ffecec;
+}
+
 .section {
     background-color: rgba(0, 0, 0, 0.1);
     padding: 50px 145px;
+    min-height: 100vh;
+}
+
+.content_pages_container {
+    margin: 0 0 50px 0;
+}
+
+.donation-container {
+    max-width: 1280px;
+    margin: 100px auto;
+    background: #fff;
+    padding: 70px 24px;
+    border-radius: 30px;
+    border: 2px solid #ff2a23;
+}
+
+.donation-content {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.donation-container h2 {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.frequency-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.frequency-wrapper {
+    display: inline-flex;
+    border-radius: 9999px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.frequency-wrapper input[type="radio"] {
+    display: none;
+}
+
+.freq-label {
+    padding: 18px 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    color: #555;
+    font-size: 18px;
+}
+
+.frequency-wrapper input[type="radio"]:checked + .freq-label {
+    background-color: #ff4444;
+    color: #fff;
+    border-radius: 100px;
+}
+
+.sums-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sums-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.sums-wrapper input[type="radio"] {
+    display: none;
+}
+
+.sum-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    padding: 20px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.sum-label:hover {
+    background-color: #ededed;
+}
+
+.sums-wrapper input[type="radio"]:checked + .sum-label,
+.sums-wrappers + .sum-label {
+    border-color: #ff4444;
+    color: #ff4444;
+    display: flex;
+}
+
+.sum-other-block {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sum-other-block input[type="number"] {
+    width: 80px;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    text-align: right;
+    outline: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.hide-amount-block {
+    margin-top: 10px;
+}
+
+.inputs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.inputs-grid input[type="text"],
+.inputs-grid input[type="email"] {
+    width: 300px;
+    border-radius: 100px;
+    padding: 15px 10px 15px 25px;
+    font-size: 18px;
+    background-color: #ededed;
+    border: none;
+}
+
+.comment-area {
+    margin-bottom: 15px;
+    margin-top: 40px;
+}
+
+.comment-area textarea {
+    height: 148px;
+    width: 700px;
+    border: none;
+    outline: none;
+    resize: none;
+    border-radius: 30px;
+    background-color: #ededed;
+    padding: 30px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.checkbox-row {
+    margin-bottom: 10px;
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin-right: 6px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* ---------- Кнопка Пожертвовать ---------- */
+.donate-btn-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.donate-btn-container button {
+    background-color: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.donate-btn-container button:hover {
+    opacity: 0.85;
+}
+
+.min-info {
+    font-size: 12px;
+    color: #888;
+}
+
+
+.goog-logo-link,
+.goog-te-gadget span {
+  display: none !important;
+}
+.goog-te-gadget {
+  font-size: 0;
+}
+
+iframe {
+    display: none;
 }
